@@ -15,17 +15,23 @@ changeName();
 //Variable to access database collection
 
 async function changeName() {
-    const userDB = await firestore.collection("user_info").get();
+    const userDB = (await firestore.collection("user_info").get()).docs[0].data();
     userName = document.getElementsByClassName("user-name");  // Find the elements
     for (var i = 0; i < userName.length; i++) {
-        userName[i].innerText = userDB.docs[0].data()['name'];    // Change the content
+        userName[i].innerText = userDB['name'];    // Change the content
     }
 
     userJob = document.getElementById("user-job");
-    userJob.innerText = userDB.docs[0].data()['job'];
+    userJob.innerText = userDB['job'];
 
     userAvatar = document.getElementById("user-avatar");
-    userAvatar.src = userDB.docs[0].data()['avatar']
+    userAvatar.src = userDB['avatar'];
+
+    userAboutDetail = document.getElementById("user-about-detail");
+    userAboutDetail.innerText = userDB['introduce_detail'];
+
+    userAboutShort = document.getElementById("user-about-short");
+    userAboutShort.innerText = userDB['introduce_short'];
 }
 
 
