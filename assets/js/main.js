@@ -25,7 +25,7 @@ async function changeName() {
     userJob.innerText = userDB.docs[0].data()['job'];
 
     userAvatar = document.getElementById("user-avatar");
-    userAvatar.src = userDB.docs[0].data()['avatar'];
+    userAvatar.src = userDB.docs[0].data()['avatar']
 }
 
 
