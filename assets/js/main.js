@@ -10,29 +10,177 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
-changeName();
+changeInfo();
 
 //Variable to access database collection
 
-async function changeName() {
+async function changeInfo() {
     const userDB = (await firestore.collection("user_info").get()).docs[0].data();
-    userName = document.getElementsByClassName("user-name");  // Find the elements
+
+    changeAbout(userDB['about']);
+
+    changeService(userDB['service']);
+
+    changeRecentWork(userDB['recent_work']);
+
+    changeBlog(userDB['content']);
+
+    changeSkill(userDB);
+
+    $("a").attr("target", "_blank");
+}
+
+function changeAbout(userAboutDB) {
+    userName = document.getElementsByClassName("user-name");
     for (var i = 0; i < userName.length; i++) {
-        userName[i].innerText = userDB['name'];    // Change the content
+        userName[i].innerText = userAboutDB['name'];
     }
 
     userJob = document.getElementById("user-job");
-    userJob.innerText = userDB['job'];
+    userJob.innerText = userAboutDB['job'];
 
     userAvatar = document.getElementById("user-avatar");
-    userAvatar.src = userDB['avatar'];
+    userAvatar.src = userAboutDB['avatar'];
 
-    userAboutDetail = document.getElementById("user-about-detail");
-    userAboutDetail.innerText = userDB['introduce_detail'];
+    userAboutDetail = document.getElementsByClassName("user-about-detail");
+    for (var i = 0; i < userAboutDetail.length; i++) {
+        userAboutDetail[i].innerText = userAboutDB['introduce_detail'];
+    }
 
     userAboutShort = document.getElementById("user-about-short");
-    userAboutShort.innerText = userDB['introduce_short'];
+    userAboutShort.innerText = userAboutDB['introduce_short'];
+
+    userDob = document.getElementById("user-dob");
+    userDob.innerText = userAboutDB['dob'];
+
+    userEmail = document.getElementsByClassName("user-email");
+    for (var i = 0; i < userEmail.length; i++) {
+        userEmail[i].innerText = userAboutDB['email'];
+    }
+
+    userPhone = document.getElementsByClassName("user-phone");
+    for (var i = 0; i < userPhone.length; i++) {
+        userPhone[i].innerText = userAboutDB['phone'];
+    }
+
+    userLocation = document.getElementsByClassName("user-location");
+    for (var i = 0; i < userLocation.length; i++) {
+        userLocation[i].innerText = userAboutDB['location'];
+    }
+
+    userFacebook = document.getElementsByClassName("facebook-link");
+    for (var i = 0; i < userFacebook.length; i++) {
+        userFacebook[i].href = userAboutDB['facebook'];
+    }
+
+    userTiktok = document.getElementsByClassName("tiktok-link");
+    for (var i = 0; i < userTiktok.length; i++) {
+        userTiktok[i].href = userAboutDB['tiktok'];
+    }
+
+    userInstagram = document.getElementsByClassName("instagram-link");
+    for (var i = 0; i < userInstagram.length; i++) {
+        userInstagram[i].href = userAboutDB['instagram'];
+    }
+
 }
+
+function changeSkill(userDB) {
+    userSkill = document.getElementById("user-skills");
+    var listSkill = userDB['skills'].map(e => generateSkillItem(e['title'], e['value']));
+    userSkill.innerHTML = '';
+    userSkill.replaceChildren(...listSkill);
+    if ($('.progress-line').length) {
+        $('.progress-line').appear(function () {
+            var el = $(this);
+            var percent = el.data('width');
+            $(el).css('width', percent + '%');
+        }, { accY: 0 });
+    }
+}
+
+function changeService(userServiceDB) {
+    userService = document.getElementById("user-services");
+    var listService = userServiceDB['list'].map(e => generateServiceItem(e['title'], e['info'], e['icon']));
+    userService.innerHTML = '';
+    userService.replaceChildren(...listService);
+
+    document.getElementById("service-info").innerText = userServiceDB['introduce'];
+
+}
+
+function changeRecentWork(userRecentWorkDB) {
+    document.getElementById('recent-work-info').innerText = userRecentWorkDB['introduce'];
+    document.getElementById('work-link').href = userRecentWorkDB['link'];
+
+    userWork = document.getElementById("user-works");
+    var listWork = userRecentWorkDB['posts'].map(e => generateWorkItem(e['title'], e['link'], e['image']));
+    userWork.innerHTML = '';
+    userWork.replaceChildren(...listWork);
+}
+
+function changeBlog(userBlogDB) {
+    document.getElementById('blog-info').innerText = userBlogDB['introduce'];
+    document.getElementById('blog-link').href = userBlogDB['link'];
+
+    userBlog = document.getElementById("user-blog");
+    var listBlog = userBlogDB['posts'].map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
+    userBlog.innerHTML = '';
+    userBlog.replaceChildren(...listBlog);
+}
+
+function generateSkillItem(skill, value) {
+    var div = document.createElement('div');
+    let skillHtml = '<div class="skill-item mt-25"><div class="skill-header"><h6 class="skill-title">' + skill + '</h6><div class="skill-percentage"><div class="count-box counted"><span class="counter">' + value + '</span></div>%</div></div><div class="skill-bar"><div class="bar-inner"><div class="bar progress-line" data-width="' + value + '"></div></div></div></div>';
+    div.innerHTML = skillHtml.trim();
+    return div;
+}
+
+function generateServiceItem(title, info, icon) {
+    var div = document.createElement('div');
+    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8']);
+    let serviceHtml = '<div class="single-service text-center mt-30"><div class="service-icon"><i class="' + icon + '"></i></div><div class="service-content"><h4 class="service-title"><a href="#">' + title + '</a></h4><p>' + info + '</p></div></div> <!-- single service -->'
+    div.innerHTML = serviceHtml.trim();
+    return div;
+}
+
+function generateWorkItem(title, link, image) {
+    var div = document.createElement('div');
+    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-6']);
+    let workHtml = `<div class="single-work text-center mt-30">
+    <div class="work-image">
+        <img src="${image}" alt="work">
+    </div>
+    <div class="work-overlay">
+        <div class="work-content">
+            <h3 class="work-title">${title}</h3>
+            <ul>
+                <li><a class="image-popup" href="${image}"><i
+                            class="lni-plus"></i></a></li>
+                <li><a href="${link}"><i class="lni-link"></i></a></li>
+            </ul>
+        </div>
+    </div>`;
+    div.innerHTML = workHtml.trim();
+    return div;
+}
+
+function generateBlogItem(title, link, image, datePost) {
+    var div = document.createElement('div');
+    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
+    let blogHtml = `<div class="single-blog mt-30">
+    <div class="blog-image">
+        <img src="${image}" alt="Blog">
+    </div>
+    <div class="blog-content">
+        <h4 class="blog-title"><a href="${link}">${title}</a></h4>
+        <span>${datePost}</span>
+    </div>
+    </div>`;
+    div.innerHTML = blogHtml.trim();
+    return div;
+}
+
 
 
 (function ($) {
@@ -44,7 +192,6 @@ async function changeName() {
     $(window).on('load', function (event) {
         $('.preloader').delay(500).fadeOut(500);
     });
-
 
     //===== Mobile Menu 
 
@@ -160,15 +307,6 @@ async function changeName() {
 
 
 
-
-
-
-
-
-
-
-
-
-
+    $("a").attr("target", "_blank");
 
 }(jQuery));

@@ -992,7 +992,21 @@ p {
 .single-work {
   position: relative; }
   .single-work .work-image img {
-    width: 100%; }
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+  .single-work .work-image:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%; 
+  }
   .single-work .work-overlay {
     position: absolute;
     top: 0;
@@ -1186,11 +1200,24 @@ p {
     overflow: hidden; }
     .single-blog .blog-image img {
       width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      object-fit: cover;
+      object-position: center;
       -webkit-transition: all 0.3s ease-out 0s;
       -moz-transition: all 0.3s ease-out 0s;
       -ms-transition: all 0.3s ease-out 0s;
       -o-transition: all 0.3s ease-out 0s;
       transition: all 0.3s ease-out 0s; }
+    .single-blog .blog-image:after{
+      content: "";
+      display: block;
+      padding-bottom: 100%; 
+    }
   .single-blog .blog-content {
     width: 75%;
     position: absolute;
