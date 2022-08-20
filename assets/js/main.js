@@ -40,6 +40,9 @@ function changeAbout(userAboutDB) {
     userAvatar = document.getElementById("user-avatar");
     userAvatar.src = userAboutDB['avatar'];
 
+    userYoutube = document.getElementById('youtube-video');
+    userYoutube.innerHTML = userAboutDB['youtube_video'].trim();
+
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
         userAboutDetail[i].innerText = userAboutDB['introduce_detail'];

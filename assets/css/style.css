@@ -106,6 +106,12 @@ span,
 a {
   display: inline-block; }
 
+iframe{
+  width: 100% !important;
+  height: 40vw !important;
+  object-fit:cover!important;
+}
+
 h1,
 h2,
 h3,
