@@ -26,8 +26,6 @@ async function changeInfo() {
     changeBlog(userDB['content']);
 
     changeSkill(userDB);
-
-    $("a").attr("target", "_blank");
 }
 
 function changeAbout(userAboutDB) {
@@ -50,8 +48,8 @@ function changeAbout(userAboutDB) {
     userAboutShort = document.getElementById("user-about-short");
     userAboutShort.innerText = userAboutDB['introduce_short'];
 
-    userDob = document.getElementById("user-dob");
-    userDob.innerText = userAboutDB['dob'];
+    // userDob = document.getElementById("user-dob");
+    // userDob.innerText = userAboutDB['dob'];
 
     userEmail = document.getElementsByClassName("user-email");
     for (var i = 0; i < userEmail.length; i++) {
@@ -83,20 +81,18 @@ function changeAbout(userAboutDB) {
         userInstagram[i].href = userAboutDB['instagram'];
     }
 
+    userYoutube = document.getElementsByClassName("youtube");
+    for (var i = 0; i < userTiktok.length; i++) {
+        userTiktok[i].href = userAboutDB['youtube'];
+        userTiktok[i].setAttribute("target", "_blank");
+    }
 }
 
 function changeSkill(userDB) {
     userSkill = document.getElementById("user-skills");
-    var listSkill = userDB['skills'].map(e => generateSkillItem(e['title'], e['value']));
+    var listSkill = userDB['skills'].map(e => generateSkillItem(e['title'], e['value'], e['icon']));
     userSkill.innerHTML = '';
     userSkill.replaceChildren(...listSkill);
-    if ($('.progress-line').length) {
-        $('.progress-line').appear(function () {
-            var el = $(this);
-            var percent = el.data('width');
-            $(el).css('width', percent + '%');
-        }, { accY: 0 });
-    }
 }
 
 function changeService(userServiceDB) {
@@ -129,9 +125,15 @@ function changeBlog(userBlogDB) {
     userBlog.replaceChildren(...listBlog);
 }
 
-function generateSkillItem(skill, value) {
+function generateSkillItem(skill, value, icon) {
     var div = document.createElement('div');
-    let skillHtml = '<div class="skill-item mt-25"><div class="skill-header"><h6 class="skill-title">' + skill + '</h6><div class="skill-percentage"><div class="count-box counted"><span class="counter">' + value + '</span></div>%</div></div><div class="skill-bar"><div class="bar-inner"><div class="bar progress-line" data-width="' + value + '"></div></div></div></div>';
+    div.classList.add(...['column']);
+    let skillHtml = `
+    <div class="card" id="counter-number">
+      <p><i class="fa fa-`+icon+`"></i></p>
+      <h3><span class="counter-value" data-count="`+value+`">0</span>+</h3>
+      <p style="color: black;">`+skill+`</p>
+    </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
 }
@@ -155,7 +157,7 @@ function generateWorkItem(title, link, image) {
         <div class="work-content">
             <h3 class="work-title">${title}</h3>
             <ul>
-                <li><a class="image-popup" href="${image}"><i
+                <li><a class="image-popup" target="_blank" href="${image}"><i
                             class="lni-plus"></i></a></li>
                 <li><a href="${link}"><i class="lni-link"></i></a></li>
             </ul>
@@ -173,7 +175,7 @@ function generateBlogItem(title, link, image, datePost) {
         <img src="${image}" alt="Blog">
     </div>
     <div class="blog-content">
-        <h4 class="blog-title"><a href="${link}">${title}</a></h4>
+        <h4 class="blog-title"><a href="${link}" target="_blank">${title}</a></h4>
         <span>${datePost}</span>
     </div>
     </div>`;
@@ -304,9 +306,5 @@ function generateBlogItem(title, link, image, datePost) {
         }, 1500);
     });
     //===== 
-
-
-
-    $("a").attr("target", "_blank");
 
 }(jQuery));
