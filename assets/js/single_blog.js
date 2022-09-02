@@ -17,58 +17,18 @@ changeInfo();
 async function changeInfo() {
     const userDB = (await firestore.collection("user_info").get()).docs[0].data();
 
-    changeAbout(userDB['about']);
-
-    changeService(userDB['service']);
-
-    changeRecentWork(userDB['recent_work']);
 
     changeBlog(userDB['content']);
 
-    changeSkill(userDB);
+    changeAbout(userDB['about']);
 }
 
 function changeAbout(userAboutDB) {
-    userName = document.getElementsByClassName("user-name");
-    for (var i = 0; i < userName.length; i++) {
-        userName[i].innerText = userAboutDB['name'];
-    }
-
-    userJob = document.getElementById("user-job");
-    userJob.innerText = userAboutDB['job'];
-
-    userAvatar = document.getElementById("user-avatar");
-    userAvatar.src = userAboutDB['avatar'];
-
-    userYoutube = document.getElementById('youtube-video');
-    userYoutube.innerHTML = userAboutDB['youtube_video'].trim();
-
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
         userAboutDetail[i].innerText = userAboutDB['introduce_detail'];
     }
-
-    userAboutShort = document.getElementById("user-about-short");
-    userAboutShort.innerText = userAboutDB['introduce_short'];
-
-    // userDob = document.getElementById("user-dob");
-    // userDob.innerText = userAboutDB['dob'];
-
-    userEmail = document.getElementsByClassName("user-email");
-    for (var i = 0; i < userEmail.length; i++) {
-        userEmail[i].innerText = userAboutDB['email'];
-    }
-
-    userPhone = document.getElementsByClassName("user-phone");
-    for (var i = 0; i < userPhone.length; i++) {
-        userPhone[i].innerText = userAboutDB['phone'];
-    }
-
-    userLocation = document.getElementsByClassName("user-location");
-    for (var i = 0; i < userLocation.length; i++) {
-        userLocation[i].innerText = userAboutDB['location'];
-    }
-
+    
     userFacebook = document.getElementsByClassName("facebook-link");
     for (var i = 0; i < userFacebook.length; i++) {
         userFacebook[i].href = userAboutDB['facebook'];
@@ -87,7 +47,6 @@ function changeAbout(userAboutDB) {
     userYoutube = document.getElementsByClassName("youtube");
     for (var i = 0; i < userTiktok.length; i++) {
         userTiktok[i].href = userAboutDB['youtube'];
-        userTiktok[i].setAttribute("target", "_blank");
     }
 }
 
@@ -110,7 +69,7 @@ function changeService(userServiceDB) {
 
 function changeRecentWork(userRecentWorkDB) {
     document.getElementById('recent-work-info').innerText = userRecentWorkDB['introduce'];
-    
+    document.getElementById('work-link').href = userRecentWorkDB['link'];
 
     userWork = document.getElementById("user-works");
     var listWork = userRecentWorkDB['posts'].map(e => generateWorkItem(e['title'], e['link'], e['image']));
@@ -119,11 +78,16 @@ function changeRecentWork(userRecentWorkDB) {
 }
 
 function changeBlog(userBlogDB) {
-    document.getElementById('blog-info').innerText = userBlogDB['introduce'];
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get('id');
+    currentBlog = userBlogDB['posts'][id];
+    document.getElementById("blog-image").src=currentBlog['image'];
+    document.getElementById("blog-title").innerHTML = currentBlog['title'];
+    document.getElementById("blog-date").innerHTML = '<i class="lni-calendar"></i> ' +  currentBlog['datePost']
+    document.getElementById("blog-link").src = currentBlog['content']+'?embedded=true';
 
     userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function(blog){return blog['isActive']==true});
-    var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
+    var listBlog = userBlogDB['posts'].map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
 }
@@ -171,19 +135,20 @@ function generateWorkItem(title, link, image) {
 }
 
 function generateBlogItem(title, link, image, datePost) {
-    var div = document.createElement('div');
-    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let blogHtml = `<div class="single-blog mt-30">
-    <div class="blog-image">
-        <img src="${image}" alt="Blog">
+    var li = document.createElement('li');
+    let blogHtml = `
+    <div class="single-sidebar-post d-flex">
+        <div class="post-thumb">
+            <a href="`+link+`"><img style="width: 70px; height: 68px;" src="`+image+`" alt="Post"></a>
+        </div>
+        <div class="post-content media-body">
+            <h5 class="post-title"><a href="#">`+title+`</a></h5>
+            <span><i class="lni-calendar"></i>  `+datePost+`</span>
+        </div>
     </div>
-    <div class="blog-content">
-        <h4 class="blog-title"><a href="${link}" target="_blank">${title}</a></h4>
-        <span>${datePost}</span>
-    </div>
-    </div>`;
-    div.innerHTML = blogHtml.trim();
-    return div;
+`;
+    li.innerHTML = blogHtml.trim();
+    return li;
 }
 
 
