@@ -77,6 +77,8 @@ function changeAbout(userAboutDB) {
     userTiktok = document.getElementsByClassName("tiktok-link");
     for (var i = 0; i < userTiktok.length; i++) {
         userTiktok[i].href = userAboutDB['tiktok'];
+
+        console.log(userTiktok[i]);
     }
 
     userInstagram = document.getElementsByClassName("instagram-link");
@@ -85,9 +87,8 @@ function changeAbout(userAboutDB) {
     }
 
     userYoutube = document.getElementsByClassName("youtube");
-    for (var i = 0; i < userTiktok.length; i++) {
-        userTiktok[i].href = userAboutDB['youtube'];
-        userTiktok[i].setAttribute("target", "_blank");
+    for (var i = 0; i < userYoutube.length; i++) {
+        userYoutube[i].href = userAboutDB['youtube'];
     }
 }
 

@@ -45,8 +45,8 @@ function changeAbout(userAboutDB) {
     }
 
     userYoutube = document.getElementsByClassName("youtube");
-    for (var i = 0; i < userTiktok.length; i++) {
-        userTiktok[i].href = userAboutDB['youtube'];
+    for (var i = 0; i < userYoutube.length; i++) {
+        userYoutube[i].href = userAboutDB['youtube'];
     }
 }
 
