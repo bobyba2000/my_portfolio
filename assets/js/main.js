@@ -159,7 +159,7 @@ function generateWorkItem(title, link, image) {
     </div>
     <div class="work-overlay">
         <div class="work-content">
-            <h3 class="work-title">${title}</h3>
+            <h3 class="work-title" style="padding: 5px">${title}</h3>
             <ul>
                 <li><a class="image-popup" target="_blank" href="${image}"><i
                             class="lni-plus"></i></a></li>
