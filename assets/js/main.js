@@ -35,7 +35,7 @@ function changeAbout(userAboutDB) {
     }
 
     userJob = document.getElementById("user-job");
-    userJob.innerText = userAboutDB['job'];
+    userJob.innerHTML = userAboutDB['job'];
 
     userAvatar = document.getElementById("user-avatar");
     userAvatar.src = userAboutDB['avatar'];
@@ -45,28 +45,28 @@ function changeAbout(userAboutDB) {
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerText = userAboutDB['introduce_detail'];
+        userAboutDetail[i].innerHTML = userAboutDB['introduce_detail'];
     }
 
     userAboutShort = document.getElementById("user-about-short");
-    userAboutShort.innerText = userAboutDB['introduce_short'];
+    userAboutShort.innerHTML = userAboutDB['introduce_short'];
 
     // userDob = document.getElementById("user-dob");
     // userDob.innerText = userAboutDB['dob'];
 
     userEmail = document.getElementsByClassName("user-email");
     for (var i = 0; i < userEmail.length; i++) {
-        userEmail[i].innerText = userAboutDB['email'];
+        userEmail[i].innerHTML = userAboutDB['email'];
     }
 
     userPhone = document.getElementsByClassName("user-phone");
     for (var i = 0; i < userPhone.length; i++) {
-        userPhone[i].innerText = userAboutDB['phone'];
+        userPhone[i].innerHTML = userAboutDB['phone'];
     }
 
     userLocation = document.getElementsByClassName("user-location");
     for (var i = 0; i < userLocation.length; i++) {
-        userLocation[i].innerText = userAboutDB['location'];
+        userLocation[i].innerHTML = userAboutDB['location'];
     }
 
     userFacebook = document.getElementsByClassName("facebook-link");
