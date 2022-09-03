@@ -87,7 +87,8 @@ function changeBlog(userBlogDB) {
     document.getElementById("blog-link").src = currentBlog['content']+'?embedded=true';
 
     userBlog = document.getElementById("user-blog");
-    var listBlog = userBlogDB['posts'].map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
+    var listBlogDB = userBlogDB['posts'].filter(function(blog){return blog['isActive']==true});
+    var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
 }
