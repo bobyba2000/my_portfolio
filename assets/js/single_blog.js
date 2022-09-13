@@ -28,6 +28,21 @@ function changeAbout(userAboutDB) {
     for (var i = 0; i < userAboutDetail.length; i++) {
         userAboutDetail[i].innerText = userAboutDB['introduce_detail'];
     }
+
+    userEmail = document.getElementsByClassName("user-email");
+    for (var i = 0; i < userEmail.length; i++) {
+        userEmail[i].innerHTML = userAboutDB['email'];
+    }
+
+    userPhone = document.getElementsByClassName("user-phone");
+    for (var i = 0; i < userPhone.length; i++) {
+        userPhone[i].innerHTML = userAboutDB['phone'];
+    }
+
+    userLocation = document.getElementsByClassName("user-location");
+    for (var i = 0; i < userLocation.length; i++) {
+        userLocation[i].innerHTML = userAboutDB['location'];
+    }
     
     userFacebook = document.getElementsByClassName("facebook-link");
     for (var i = 0; i < userFacebook.length; i++) {
