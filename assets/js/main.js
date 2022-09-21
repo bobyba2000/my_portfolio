@@ -48,6 +48,11 @@ function changeAbout(userAboutDB) {
         userAboutDetail[i].innerHTML = userAboutDB['introduce_detail'];
     }
 
+    userAboutDetail = document.getElementsByClassName("user-footer");
+    for (var i = 0; i < userAboutDetail.length; i++) {
+        userAboutDetail[i].innerHTML = userAboutDB['footer'];
+    }
+
     userAboutShort = document.getElementById("user-about-short");
     userAboutShort.innerHTML = userAboutDB['introduce_short'];
 

@@ -24,9 +24,11 @@ async function changeInfo() {
 }
 
 function changeAbout(userAboutDB) {
-    userAboutDetail = document.getElementsByClassName("user-about-detail");
+    
+
+    userAboutDetail = document.getElementsByClassName("user-footer");
     for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerText = userAboutDB['introduce_detail'];
+        userAboutDetail[i].innerHTML = userAboutDB['footer'];
     }
 
     userEmail = document.getElementsByClassName("user-email");
