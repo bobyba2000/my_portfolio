@@ -18,7 +18,7 @@ async function changeInfo() {
     const userDB = (await firestore.collection("user_info").get()).docs[0].data();
 
 
-    changeBlog(userDB['content']);
+    changeAchivement(userDB['recent_work']);
 
     changeAbout(userDB['about']);
 }
@@ -92,20 +92,19 @@ function changeRecentWork(userRecentWorkDB) {
     userWork.replaceChildren(...listWork);
 }
 
-function changeBlog(userBlogDB) {
+function changeAchivement(userAchivementDB) {
     const params = new URLSearchParams(window.location.search)
     const id = params.get('id');
-    currentBlog = userBlogDB['posts'][id];
-    document.getElementById("blog-image").src = currentBlog['image'];
-    document.getElementById("blog-title").innerHTML = currentBlog['title'];
-    document.getElementById("blog-date").innerHTML = '<i class="lni-calendar"></i> ' + currentBlog['datePost']
-    document.getElementById("blog-link").src = currentBlog['content'] + '?embedded=true';
+    currentAchivement = userAchivementDB['posts'][id];
+    document.getElementById("blog-image").src = currentAchivement['image'];
+    document.getElementById("blog-title").innerHTML = currentAchivement['title'];
+    document.getElementById("blog-link").src = currentAchivement['content'] + '?embedded=true';
 
-    userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
-    var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
-    userBlog.innerHTML = '';
-    userBlog.replaceChildren(...listBlog);
+    userAchivement = document.getElementById("user-blog");
+    var listAchivementDB = userAchivementDB['posts'].filter(function (achivement) { return achivement['isActive'] == true });
+    var listAchivement = listAchivementDB.map(e => generateAchivementItem(e['title'], e['link'], e['image'], e['datePost']));
+    userAchivement.innerHTML = '';
+    userAchivement.replaceChildren(...listAchivement);
 }
 
 function generateSkillItem(skill, value, icon) {
@@ -150,9 +149,9 @@ function generateWorkItem(title, link, image) {
     return div;
 }
 
-function generateBlogItem(title, link, image, datePost) {
+function generateAchivementItem(title, link, image, datePost) {
     var li = document.createElement('li');
-    let blogHtml = `
+    let achivementHtml = `
     <div class="single-sidebar-post d-flex">
         <div class="post-thumb">
             <a href="`+ link + `"><img style="width: 70px; height: 68px;" src="` + image + `" alt="Post"></a>
@@ -163,7 +162,7 @@ function generateBlogItem(title, link, image, datePost) {
         </div>
     </div>
 `;
-    li.innerHTML = blogHtml.trim();
+    li.innerHTML = achivementHtml.trim();
     return li;
 }
 

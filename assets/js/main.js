@@ -34,8 +34,8 @@ function changeAbout(userAboutDB) {
         userName[i].innerText = userAboutDB['name'];
     }
 
-    userJob = document.getElementById("user-job");
-    userJob.innerHTML = userAboutDB['job'];
+    // userJob = document.getElementById("user-job");
+    // userJob.innerHTML = userAboutDB['job'];
 
     userAvatar = document.getElementById("user-avatar");
     userAvatar.src = userAboutDB['avatar'];
@@ -101,7 +101,7 @@ function changeSkill(userDB) {
 
 function changeService(userServiceDB) {
     userService = document.getElementById("user-services");
-    var listService = userServiceDB['list'].map(e => generateServiceItem(e['title'], e['info'], e['icon']));
+    var listService = userServiceDB['list'].map(e => generateServiceItem(e['title'], e['info'], e['icon'], e['image']));
     userService.innerHTML = '';
     userService.replaceChildren(...listService);
 
@@ -114,7 +114,8 @@ function changeRecentWork(userRecentWorkDB) {
     
 
     userWork = document.getElementById("user-works");
-    var listWork = userRecentWorkDB['posts'].map(e => generateWorkItem(e['title'], e['link'], e['image']));
+    var listWorkDB = userRecentWorkDB['posts'].filter(function(work){return work['isActive']==true});
+    var listWork = listWorkDB.map(e => generateWorkItem(e['title'], e['link'], e['image']));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
 }
@@ -136,16 +137,29 @@ function generateSkillItem(skill, value, icon) {
     <div class="card" id="counter-number">
       <p><i class="fa fa-`+icon+`"></i></p>
       <h3><span class="counter-value" data-count="`+value+`">0</span>+</h3>
-      <p style="color: black;">`+skill+`</p>
+      <p style="color: white;">`+skill+`</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
 }
 
-function generateServiceItem(title, info, icon) {
+function generateServiceItem(title, info, icon, image) {
     var div = document.createElement('div');
-    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8']);
-    let serviceHtml = '<div class="single-service text-center mt-30"><div class="service-icon"><i class="' + icon + '"></i></div><div class="service-content"><h4 class="service-title"><a href="#">' + title + '</a></h4><p>' + info + '</p></div></div> <!-- single service -->'
+    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8', 'mt-30']);
+    let serviceHtml = 
+        `<div class="service-background  mt-30" style="background-image: url('${image}')">
+            <div class="single-service text-center">
+                <div class="service-icon">
+                    <i class="` + icon + `"></i>
+                </div>
+                <div class="service-content">
+                    <h4 class="service-title">
+                        <a href="#">'` + title + `</a>
+                    </h4>
+                    <p>` + info + `</p>
+                </div>
+            </div>
+        </div> <!-- single service -->`
     div.innerHTML = serviceHtml.trim();
     return div;
 }
@@ -163,7 +177,7 @@ function generateWorkItem(title, link, image) {
             <ul>
                 <li><a class="image-popup" target="_blank" href="${image}"><i
                             class="lni-plus"></i></a></li>
-                <li><a href="${link}"><i class="lni-link"></i></a></li>
+                <li><a href="${link}" target="_blank"><i class="lni-link"></i></a></li>
             </ul>
         </div>
     </div>`;
