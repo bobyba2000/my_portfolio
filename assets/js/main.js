@@ -25,6 +25,8 @@ async function changeInfo() {
 
     changeBlog(userDB['content']);
 
+    changeLearing(userDB['learning']);
+
     changeSkill(userDB);
 }
 
@@ -41,7 +43,7 @@ function changeAbout(userAboutDB) {
     userAvatar.src = userAboutDB['avatar'];
 
     userYoutube = document.getElementById('youtube-video');
-    userYoutube.innerHTML = userAboutDB['youtube_video'].trim();
+    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
@@ -116,10 +118,10 @@ function changeService(userServiceDB) {
 
 function changeRecentWork(userRecentWorkDB) {
     document.getElementById('recent-work-info').innerText = userRecentWorkDB['introduce'];
-    
+
 
     userWork = document.getElementById("user-works");
-    var listWorkDB = userRecentWorkDB['posts'].filter(function(work){return work['isActive']==true});
+    var listWorkDB = userRecentWorkDB['posts'].filter(function (work) { return work['isActive'] == true });
     var listWork = listWorkDB.map(e => generateWorkItem(e['title'], e['link'], e['image']));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
@@ -129,10 +131,20 @@ function changeBlog(userBlogDB) {
     document.getElementById('blog-info').innerText = userBlogDB['introduce'];
 
     userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function(blog){return blog['isActive']==true});
+    var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
     var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
+}
+
+function changeLearing(userLearningDB) {
+    document.getElementById('learning-info').innerText = userLearningDB['introduce'];
+
+    userLearning = document.getElementById("user-learning");
+    var listLearningDB = userLearningDB['posts'].filter(function (learning) { return learning['isActive'] == true });
+    var listLearning = listLearningDB.map(e => generateLearningItem(e['title'], e['link'], e['image']));
+    userLearning.innerHTML = '';
+    userLearning.replaceChildren(...listLearning);
 }
 
 function generateSkillItem(skill, value, icon) {
@@ -140,9 +152,9 @@ function generateSkillItem(skill, value, icon) {
     div.classList.add(...['column']);
     let skillHtml = `
     <div class="card" id="counter-number">
-      <p><i class="fa fa-`+icon+`"></i></p>
-      <h3><span class="counter-value" data-count="`+value+`">0</span>+</h3>
-      <p style="color: white;">`+skill+`</p>
+      <p><i class="fa fa-`+ icon + `"></i></p>
+      <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
+      <p style="color: white;">`+ skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
@@ -151,9 +163,10 @@ function generateSkillItem(skill, value, icon) {
 function generateServiceItem(title, info, icon, image) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8', 'mt-30']);
-    let serviceHtml = 
+    let serviceHtml =
         `<div class="service-background  mt-30" style="background-image: url('${image}')">
             <div class="single-service text-center">
+                <div>
                 <div class="service-icon">
                     <i class="` + icon + `"></i>
                 </div>
@@ -163,6 +176,8 @@ function generateServiceItem(title, info, icon, image) {
                     </h4>
                     <p>` + info + `</p>
                 </div>
+                </div>
+                <a class="main-btn" href="#work"><span>Tìm hiểu ngay</span></a>
             </div>
         </div> <!-- single service -->`
     div.innerHTML = serviceHtml.trim();
@@ -203,6 +218,21 @@ function generateBlogItem(title, link, image, datePost) {
     </div>
     </div>`;
     div.innerHTML = blogHtml.trim();
+    return div;
+}
+
+function generateLearningItem(title, link, image) {
+    var div = document.createElement('div');
+    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
+    let learingHtml = `<div class="single-learning mt-30">
+    <div class="learning-image">
+        <img src="${image}" alt="learning">
+    </div>
+    <div class="learning-content">
+        <h4 class="learning-title"><a href="${link}" target="_blank">${title}</a></h4>
+    </div>
+    </div>`;
+    div.innerHTML = learingHtml.trim();
     return div;
 }
 
@@ -332,5 +362,7 @@ function generateBlogItem(title, link, image, datePost) {
 
 }(jQuery));
 
-(function($){"use strict";$(window).on('load',function(event){$('.preloader').delay(500).fadeOut(500);});$(".navbar-toggler").on('click',function(){$(this).toggleClass('active');});$(".navbar-nav a").on('click',function(){$(".navbar-toggler").removeClass('active');});$(".navbar-nav a").on('click',function(){$(".navbar-collapse").removeClass("show");});$(window).on('scroll',function(event){var scroll=$(window).scrollTop();if(scroll<10){$(".navigation").removeClass("sticky");}else{$(".navigation").addClass("sticky");}});var scrollLink=$('.page-scroll');$(window).scroll(function(){var scrollbarLocation=$(this).scrollTop();scrollLink.each(function(){var sectionOffset=$(this.hash).offset().top-73;if(sectionOffset<=scrollbarLocation){$(this).parent().addClass('active');$(this).parent().siblings().removeClass('active');}});});function parallaxMouse(){if($('#parallax').length){var scene=document.getElementById('parallax');var parallax=new Parallax(scene);};};parallaxMouse();if($('.progress-line').length){$('.progress-line').appear(function(){var el=$(this);var percent=el.data('width');$(el).css('width',percent+'%');},{accY:0});}
-$('.counter').counterUp({delay:10,time:1600,});$('.image-popup').magnificPopup({type:'image',gallery:{enabled:true}});$(window).on('scroll',function(event){if($(this).scrollTop()>600){$('.back-to-top').fadeIn(200)}else{$('.back-to-top').fadeOut(200)}});$('.back-to-top').on('click',function(event){event.preventDefault();$('html, body').animate({scrollTop:0,},1500);});}(jQuery));
+(function ($) {
+    "use strict"; $(window).on('load', function (event) { $('.preloader').delay(500).fadeOut(500); }); $(".navbar-toggler").on('click', function () { $(this).toggleClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-toggler").removeClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-collapse").removeClass("show"); }); $(window).on('scroll', function (event) { var scroll = $(window).scrollTop(); if (scroll < 10) { $(".navigation").removeClass("sticky"); } else { $(".navigation").addClass("sticky"); } }); var scrollLink = $('.page-scroll'); $(window).scroll(function () { var scrollbarLocation = $(this).scrollTop(); scrollLink.each(function () { var sectionOffset = $(this.hash).offset().top - 73; if (sectionOffset <= scrollbarLocation) { $(this).parent().addClass('active'); $(this).parent().siblings().removeClass('active'); } }); }); function parallaxMouse() { if ($('#parallax').length) { var scene = document.getElementById('parallax'); var parallax = new Parallax(scene); }; }; parallaxMouse(); if ($('.progress-line').length) { $('.progress-line').appear(function () { var el = $(this); var percent = el.data('width'); $(el).css('width', percent + '%'); }, { accY: 0 }); }
+    $('.counter').counterUp({ delay: 10, time: 1600, }); $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } }); $(window).on('scroll', function (event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } }); $('.back-to-top').on('click', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: 0, }, 1500); });
+}(jQuery));

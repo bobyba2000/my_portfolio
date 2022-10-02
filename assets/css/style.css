@@ -241,6 +241,32 @@ p {
   border-color: black;
 }
 
+.main-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.main-btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: -1px;
+  font-size: 30px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.main-btn:hover span {
+  padding-right: 25px;
+}
+
+.main-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 /*===== All Section Title Style =====*/
 .section-title .title {
   font-weight: 700;
@@ -1118,6 +1144,34 @@ p {
 /*===========================
         3.ABOUT css 
 ===========================*/
+
+.video-container{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.video-container iframe {
+  position: relative;
+  /* top: 50%; */
+  /* left: 50%; */
+  width: 100vw;
+  height: 100vh;
+  fill: black;
+  /* transform: translate(-50%, -50%); */
+  pointer-events: none;
+}
+.video-container .overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  background: black;
+  opacity: 0.7;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .about-area {
     padding-top: 90px;
@@ -1277,6 +1331,9 @@ p {
   position: relative;
   padding: 25px;
   height: 100%;
+  display: flex;
+  justify-content:space-between;
+  flex-direction:column;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -2586,3 +2643,121 @@ p.form-message.error.form-message.error {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .learning-area {
+    padding-top: 90px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .learning-area {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+.single-learning {
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.single-learning .learning-image {
+  overflow: hidden;
+}
+
+.single-learning .learning-image img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.single-learning .learning-image:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.single-learning .learning-content {
+  width: 75%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+@media (max-width: 767px) {
+  .single-learning .learning-content {
+    padding: 20px;
+  }
+}
+
+.single-learning .learning-content .learning-title a {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  color: #e5e5e5;
+}
+
+@media (max-width: 767px) {
+  .single-learning .learning-content .learning-title a {
+    font-size: 18px;
+  }
+}
+
+.single-learning .learning-content span {
+  font-size: 16px;
+  color: white;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.single-learning:hover .learning-image img {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.single-learning:hover .learning-content {
+  background-color: white;
+}
+
+.single-learning:hover .learning-content .learning-title a {
+  color: black;
+}
+
+.single-learning:hover .learning-content span {
+  color: black;
+}

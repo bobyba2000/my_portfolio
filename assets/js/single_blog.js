@@ -21,30 +21,11 @@ async function changeInfo() {
     changeBlog(userDB['content']);
 
     changeAbout(userDB['about']);
+
+    changeSkill(userDB);
 }
 
 function changeAbout(userAboutDB) {
-    
-
-    userAboutDetail = document.getElementsByClassName("user-footer");
-    for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerHTML = userAboutDB['footer'];
-    }
-
-    userEmail = document.getElementsByClassName("user-email");
-    for (var i = 0; i < userEmail.length; i++) {
-        userEmail[i].innerHTML = userAboutDB['email'];
-    }
-
-    userPhone = document.getElementsByClassName("user-phone");
-    for (var i = 0; i < userPhone.length; i++) {
-        userPhone[i].innerHTML = userAboutDB['phone'];
-    }
-
-    userLocation = document.getElementsByClassName("user-location");
-    for (var i = 0; i < userLocation.length; i++) {
-        userLocation[i].innerHTML = userAboutDB['location'];
-    }
 
     userFacebook = document.getElementsByClassName("facebook-link");
     for (var i = 0; i < userFacebook.length; i++) {
@@ -117,7 +98,7 @@ function generateSkillItem(skill, value, icon) {
     <div class="card" id="counter-number">
       <p><i class="fa fa-`+ icon + `"></i></p>
       <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
-      <p style="color: black;">`+ skill + `</p>
+      <p style="color: white;">`+ skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;

@@ -21,29 +21,11 @@ async function changeInfo() {
     changeAchivement(userDB['recent_work']);
 
     changeAbout(userDB['about']);
+
+    changeSkill(userDB);
 }
 
 function changeAbout(userAboutDB) {
-
-    userAboutDetail = document.getElementsByClassName("user-footer");
-    for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerHTML = userAboutDB['footer'];
-    }
-
-    userEmail = document.getElementsByClassName("user-email");
-    for (var i = 0; i < userEmail.length; i++) {
-        userEmail[i].innerHTML = userAboutDB['email'];
-    }
-
-    userPhone = document.getElementsByClassName("user-phone");
-    for (var i = 0; i < userPhone.length; i++) {
-        userPhone[i].innerHTML = userAboutDB['phone'];
-    }
-
-    userLocation = document.getElementsByClassName("user-location");
-    for (var i = 0; i < userLocation.length; i++) {
-        userLocation[i].innerHTML = userAboutDB['location'];
-    }
 
     userFacebook = document.getElementsByClassName("facebook-link");
     for (var i = 0; i < userFacebook.length; i++) {
@@ -103,7 +85,7 @@ function changeAchivement(userAchivementDB) {
 
     userAchivement = document.getElementById("user-blog");
     var listAchivementDB = userAchivementDB['posts'].filter(function (achivement) { return achivement['isActive'] == true });
-    var listAchivement = listAchivementDB.map(e => generateAchivementItem(e['title'], e['link'], e['image'], e['datePost']));
+    var listAchivement = listAchivementDB.map(e => generateAchivementItem(e['title'], e['link'], e['image']));
     userAchivement.innerHTML = '';
     userAchivement.replaceChildren(...listAchivement);
 }
@@ -115,7 +97,7 @@ function generateSkillItem(skill, value, icon) {
     <div class="card" id="counter-number">
       <p><i class="fa fa-`+ icon + `"></i></p>
       <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
-      <p style="color: black;">`+ skill + `</p>
+      <p style="color: white;">`+ skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
@@ -150,7 +132,7 @@ function generateWorkItem(title, link, image) {
     return div;
 }
 
-function generateAchivementItem(title, link, image, datePost) {
+function generateAchivementItem(title, link, image) {
     var li = document.createElement('li');
     let achivementHtml = `
     <div class="single-sidebar-post d-flex">
@@ -159,7 +141,6 @@ function generateAchivementItem(title, link, image, datePost) {
         </div>
         <div class="post-content media-body">
             <h5 class="post-title"><a href="#">`+ title + `</a></h5>
-            <span><i class="lni-calendar"></i>  `+ datePost + `</span>
         </div>
     </div>
 `;
