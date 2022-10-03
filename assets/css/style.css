@@ -2761,3 +2761,24 @@ p.form-message.error.form-message.error {
 .single-learning:hover .learning-content span {
   color: black;
 }
+
+.bold{
+  font-weight: bold;
+}
+
+.large{
+  font-size: large;
+}
+
+.my-work p{
+  color: black;
+}
+
+[data-overlay="5"]::before {
+	opacity: 0.5;
+  color: black;
+}
+
+.upper-case{
+  text-transform: uppercase;
+}

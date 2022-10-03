@@ -19,62 +19,12 @@ async function changeInfo() {
 
     changeAbout(userDB['about']);
 
-    changeService(userDB['service']);
-
-    changeRecentWork(userDB['recent_work']);
-
-    changeBlog(userDB['content']);
-
-    changeLearing(userDB['learning']);
-
     changeSkill(userDB);
+
+    changeContent(userDB['service']);
 }
 
 function changeAbout(userAboutDB) {
-    userName = document.getElementsByClassName("user-name");
-    for (var i = 0; i < userName.length; i++) {
-        userName[i].innerText = userAboutDB['name'];
-    }
-
-    // userJob = document.getElementById("user-job");
-    // userJob.innerHTML = userAboutDB['job'];
-
-    userAvatar = document.getElementById("user-avatar");
-    userAvatar.src = userAboutDB['avatar'];
-
-    userYoutube = document.getElementById('youtube-video');
-    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&rel=0"></iframe>`
-
-    userAboutDetail = document.getElementsByClassName("user-about-detail");
-    for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerHTML = userAboutDB['introduce_detail'];
-    }
-
-    userAboutDetail = document.getElementsByClassName("user-footer");
-    for (var i = 0; i < userAboutDetail.length; i++) {
-        userAboutDetail[i].innerHTML = userAboutDB['footer'];
-    }
-
-    userAboutShort = document.getElementById("user-about-short");
-    userAboutShort.innerHTML = userAboutDB['introduce_short'];
-
-    // userDob = document.getElementById("user-dob");
-    // userDob.innerText = userAboutDB['dob'];
-
-    userEmail = document.getElementsByClassName("user-email");
-    for (var i = 0; i < userEmail.length; i++) {
-        userEmail[i].innerHTML = userAboutDB['email'];
-    }
-
-    userPhone = document.getElementsByClassName("user-phone");
-    for (var i = 0; i < userPhone.length; i++) {
-        userPhone[i].innerHTML = userAboutDB['phone'];
-    }
-
-    userLocation = document.getElementsByClassName("user-location");
-    for (var i = 0; i < userLocation.length; i++) {
-        userLocation[i].innerHTML = userAboutDB['location'];
-    }
 
     userFacebook = document.getElementsByClassName("facebook-link");
     for (var i = 0; i < userFacebook.length; i++) {
@@ -84,8 +34,6 @@ function changeAbout(userAboutDB) {
     userTiktok = document.getElementsByClassName("tiktok-link");
     for (var i = 0; i < userTiktok.length; i++) {
         userTiktok[i].href = userAboutDB['tiktok'];
-
-        console.log(userTiktok[i]);
     }
 
     userInstagram = document.getElementsByClassName("instagram-link");
@@ -99,6 +47,31 @@ function changeAbout(userAboutDB) {
     }
 }
 
+function changeContent(userServiceDB) {
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get('id');
+    var value = userServiceDB['list'][id];
+    serviceHtml = document.getElementById("work-content-html");
+    var html = value['html'];
+
+    serviceHtml.innerHTML = html
+
+    var headerString = `<div class="page-banner bg_cover" style="background-image: url(${value['image']})" data-overlay="5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-banner-content text-center">
+                    <h2 class="page-title upper-case">${value['title']}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
+
+    headerHtml = document.getElementById("work-header");
+    headerHtml.innerHTML = headerString;
+}
+
 function changeSkill(userDB) {
     userSkill = document.getElementById("user-skills");
     var listSkill = userDB['skills'].map(e => generateSkillItem(e['title'], e['value'], e['icon']));
@@ -108,7 +81,7 @@ function changeSkill(userDB) {
 
 function changeService(userServiceDB) {
     userService = document.getElementById("user-services");
-    var listService = userServiceDB['list'].map((e, id)=> generateServiceItem(e['title'], e['info'], e['icon'], e['image'], id));
+    var listService = userServiceDB['list'].map(e => generateServiceItem(e['title'], e['info'], e['icon']));
     userService.innerHTML = '';
     userService.replaceChildren(...listService);
 
@@ -118,33 +91,27 @@ function changeService(userServiceDB) {
 
 function changeRecentWork(userRecentWorkDB) {
     document.getElementById('recent-work-info').innerText = userRecentWorkDB['introduce'];
-
+    document.getElementById('work-link').href = userRecentWorkDB['link'];
 
     userWork = document.getElementById("user-works");
-    var listWorkDB = userRecentWorkDB['posts'].filter(function (work) { return work['isActive'] == true });
-    var listWork = listWorkDB.map(e => generateWorkItem(e['title'], e['link'], e['image']));
+    var listWork = userRecentWorkDB['posts'].map(e => generateWorkItem(e['title'], e['link'], e['image']));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
 }
 
-function changeBlog(userBlogDB) {
-    document.getElementById('blog-info').innerText = userBlogDB['introduce'];
+function changeAchivement(userAchivementDB) {
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get('id');
+    currentAchivement = userAchivementDB['posts'][id];
+    document.getElementById("blog-image").src = currentAchivement['image'];
+    document.getElementById("blog-title").innerHTML = currentAchivement['title'];
+    document.getElementById("blog-link").src = currentAchivement['content'] + '?embedded=true';
 
-    userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
-    var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
-    userBlog.innerHTML = '';
-    userBlog.replaceChildren(...listBlog);
-}
-
-function changeLearing(userLearningDB) {
-    document.getElementById('learning-info').innerText = userLearningDB['introduce'];
-
-    userLearning = document.getElementById("user-learning");
-    var listLearningDB = userLearningDB['posts'].filter(function (learning) { return learning['isActive'] == true });
-    var listLearning = listLearningDB.map(e => generateLearningItem(e['title'], e['link'], e['image']));
-    userLearning.innerHTML = '';
-    userLearning.replaceChildren(...listLearning);
+    userAchivement = document.getElementById("user-blog");
+    var listAchivementDB = userAchivementDB['posts'].filter(function (achivement) { return achivement['isActive'] == true });
+    var listAchivement = listAchivementDB.map(e => generateAchivementItem(e['title'], e['link'], e['image']));
+    userAchivement.innerHTML = '';
+    userAchivement.replaceChildren(...listAchivement);
 }
 
 function generateSkillItem(skill, value, icon) {
@@ -160,26 +127,10 @@ function generateSkillItem(skill, value, icon) {
     return div;
 }
 
-function generateServiceItem(title, info, icon, image, id) {
+function generateServiceItem(title, info, icon) {
     var div = document.createElement('div');
-    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8', 'mt-30']);
-    let serviceHtml =
-        `<div class="service-background  mt-30" style="background-image: url('${image}')">
-            <div class="single-service text-center">
-                <div>
-                <div class="service-icon">
-                    <i class="` + icon + `"></i>
-                </div>
-                <div class="service-content">
-                    <h4 class="service-title">
-                        <div >` + title + `</div>
-                    </h4>
-                    <p>` + info + `</p>
-                </div>
-                </div>
-                <a class="main-btn" href="work-details.html?id=${id}"><span>Tìm hiểu ngay</span></div>
-            </div>
-        </div> <!-- single service -->`
+    div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8']);
+    let serviceHtml = '<div class="single-service text-center mt-30"><div class="service-icon"><i class="' + icon + '"></i></div><div class="service-content"><h4 class="service-title"><a href="#">' + title + '</a></h4><p>' + info + '</p></div></div> <!-- single service -->'
     div.innerHTML = serviceHtml.trim();
     return div;
 }
@@ -193,11 +144,11 @@ function generateWorkItem(title, link, image) {
     </div>
     <div class="work-overlay">
         <div class="work-content">
-            <h3 class="work-title" style="padding: 5px">${title}</h3>
+            <h3 class="work-title">${title}</h3>
             <ul>
                 <li><a class="image-popup" target="_blank" href="${image}"><i
                             class="lni-plus"></i></a></li>
-                <li><a href="${link}" target="_blank"><i class="lni-link"></i></a></li>
+                <li><a href="${link}"><i class="lni-link"></i></a></li>
             </ul>
         </div>
     </div>`;
@@ -205,35 +156,20 @@ function generateWorkItem(title, link, image) {
     return div;
 }
 
-function generateBlogItem(title, link, image, datePost) {
-    var div = document.createElement('div');
-    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let blogHtml = `<div class="single-blog mt-30">
-    <div class="blog-image">
-        <img src="${image}" alt="Blog">
+function generateAchivementItem(title, link, image) {
+    var li = document.createElement('li');
+    let achivementHtml = `
+    <div class="single-sidebar-post d-flex">
+        <div class="post-thumb">
+            <a href="`+ link + `"><img style="width: 70px; height: 68px;" src="` + image + `" alt="Post"></a>
+        </div>
+        <div class="post-content media-body">
+            <h5 class="post-title"><a href="#">`+ title + `</a></h5>
+        </div>
     </div>
-    <div class="blog-content">
-        <h4 class="blog-title"><a href="${link}" target="_blank">${title}</a></h4>
-        <span>${datePost}</span>
-    </div>
-    </div>`;
-    div.innerHTML = blogHtml.trim();
-    return div;
-}
-
-function generateLearningItem(title, link, image) {
-    var div = document.createElement('div');
-    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let learingHtml = `<div class="single-learning mt-30">
-    <div class="learning-image">
-        <img src="${image}" alt="learning">
-    </div>
-    <div class="learning-content">
-        <h4 class="learning-title"><a href="${link}" target="_blank">${title}</a></h4>
-    </div>
-    </div>`;
-    div.innerHTML = learingHtml.trim();
-    return div;
+`;
+    li.innerHTML = achivementHtml.trim();
+    return li;
 }
 
 
