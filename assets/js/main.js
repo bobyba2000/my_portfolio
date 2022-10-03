@@ -43,7 +43,7 @@ function changeAbout(userAboutDB) {
     userAvatar.src = userAboutDB['avatar'];
 
     userYoutube = document.getElementById('youtube-video');
-    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1"></iframe>`
+    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&rel=0"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
@@ -172,12 +172,12 @@ function generateServiceItem(title, info, icon, image) {
                 </div>
                 <div class="service-content">
                     <h4 class="service-title">
-                        <a href="#">'` + title + `</a>
+                        <div >` + title + `</div>
                     </h4>
                     <p>` + info + `</p>
                 </div>
                 </div>
-                <a class="main-btn" href="#work"><span>Tìm hiểu ngay</span></a>
+                <div class="main-btn" ><span>Tìm hiểu ngay</span></div>
             </div>
         </div> <!-- single service -->`
     div.innerHTML = serviceHtml.trim();
