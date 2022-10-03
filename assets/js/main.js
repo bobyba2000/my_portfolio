@@ -122,7 +122,7 @@ function changeRecentWork(userRecentWorkDB) {
 
     userWork = document.getElementById("user-works");
     var listWorkDB = userRecentWorkDB['posts'].filter(function (work) { return work['isActive'] == true });
-    var listWork = listWorkDB.map(e => generateWorkItem(e['title'], e['link'], e['image']));
+    var listWork = listWorkDB.map(e => generateWorkItem2(e['title'], e['link'], e['image']));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
 }
@@ -177,7 +177,7 @@ function generateServiceItem(title, info, icon, image, id) {
                     <p>` + info + `</p>
                 </div>
                 </div>
-                <a class="main-btn" href="work-details.html?id=${id}"><span>Tìm hiểu ngay</span></div>
+                <a class="main-btn" href="work-details.html?id=${id}" target="_blank"><span>Tìm hiểu ngay</span></div>
             </div>
         </div> <!-- single service -->`
     div.innerHTML = serviceHtml.trim();
@@ -200,6 +200,22 @@ function generateWorkItem(title, link, image) {
                 <li><a href="${link}" target="_blank"><i class="lni-link"></i></a></li>
             </ul>
         </div>
+    </div>`;
+    div.innerHTML = workHtml.trim();
+    return div;
+}
+
+function generateWorkItem2(title, link, image) {
+    var div = document.createElement('div');
+    div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
+    let workHtml = `<div class="single-work mt-30">
+    <div class="work-image">
+        <img src="${image}" alt="Blog">
+    </div>
+    <div class="work-content">
+        <h4 class="work-title"><a href="${link}" target="_blank">${title}</a></h4>
+        
+    </div>
     </div>`;
     div.innerHTML = workHtml.trim();
     return div;
@@ -232,6 +248,17 @@ function generateLearningItem(title, link, image) {
         <h4 class="learning-title"><a href="${link}" target="_blank">${title}</a></h4>
     </div>
     </div>`;
+
+    if(link == undefined || link==""){
+        learingHtml = `<div class="single-learning mt-30">
+    <div class="learning-image">
+        <img src="${image}" alt="learning">
+    </div>
+    <div class="learning-content">
+        <h4 class="learning-title"><a >${title}</a></h4>
+    </div>
+    </div>`;
+    }
     div.innerHTML = learingHtml.trim();
     return div;
 }
