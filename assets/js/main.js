@@ -112,12 +112,12 @@ function changeService(userServiceDB) {
     userService.innerHTML = '';
     userService.replaceChildren(...listService);
 
-    document.getElementById("service-info").innerText = userServiceDB['introduce'];
+    document.getElementById("service-info").innerHTML = userServiceDB['introduce'];
 
 }
 
 function changeRecentWork(userRecentWorkDB) {
-    document.getElementById('recent-work-info').innerText = userRecentWorkDB['introduce'];
+    document.getElementById('recent-work-info').innerHTML = userRecentWorkDB['introduce'];
 
 
     userWork = document.getElementById("user-works");
@@ -128,7 +128,7 @@ function changeRecentWork(userRecentWorkDB) {
 }
 
 function changeBlog(userBlogDB) {
-    document.getElementById('blog-info').innerText = userBlogDB['introduce'];
+    document.getElementById('blog-info').innerHTML = userBlogDB['introduce'];
 
     userBlog = document.getElementById("user-blog");
     var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
@@ -138,7 +138,7 @@ function changeBlog(userBlogDB) {
 }
 
 function changeLearing(userLearningDB) {
-    document.getElementById('learning-info').innerText = userLearningDB['introduce'];
+    document.getElementById('learning-info').innerHTML = userLearningDB['introduce'];
 
     userLearning = document.getElementById("user-learning");
     var listLearningDB = userLearningDB['posts'].filter(function (learning) { return learning['isActive'] == true });
