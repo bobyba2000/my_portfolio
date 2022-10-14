@@ -41,7 +41,7 @@ function changeAbout(userAboutDB) {
         userInstagram[i].href = userAboutDB['instagram'];
     }
 
-    userYoutube = document.getElementsByClassName("youtube");
+    userYoutube = document.getElementsByClassName("youtube-link");
     for (var i = 0; i < userYoutube.length; i++) {
         userYoutube[i].href = userAboutDB['youtube'];
     }
