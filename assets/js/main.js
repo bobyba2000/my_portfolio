@@ -53,7 +53,8 @@ function changeAbout(userAboutDB) {
     userAvatar.src = userAboutDB['avatar'];
 
     userYoutube = document.getElementById('youtube-video');
-    youtubeId = userAboutDB['youtube_video'].split('/').at(-1);
+    listArray = userAboutDB['youtube_video'].split('/')
+    youtubeId = listArray[listArray.length - 1];
     userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
