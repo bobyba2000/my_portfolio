@@ -28,6 +28,16 @@ async function changeInfo() {
     changeLearing(userDB['learning']);
 
     changeSkill(userDB);
+
+    changeTimeline(userDB['timeline']);
+}
+
+function changeTimeline(userTimelineDB){
+    userTimeline = document.getElementById("timeline");
+    var listTimelineDB = userTimelineDB['items'].filter(function (timeline) { return timeline['isActive'] == true });
+    var listTimeline = listTimelineDB.map(e => generateTimelineItem(e['title'], e['year'], e['image'], e['content']));
+    userTimeline.innerHTML = '';
+    userTimeline.replaceChildren(...listTimeline);
 }
 
 function changeAbout(userAboutDB) {
@@ -43,7 +53,8 @@ function changeAbout(userAboutDB) {
     userAvatar.src = userAboutDB['avatar'];
 
     userYoutube = document.getElementById('youtube-video');
-    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&rel=0"></iframe>`
+    youtubeId = userAboutDB['youtube_video'].split('/').at(-1);
+    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
@@ -155,6 +166,21 @@ function generateSkillItem(skill, value, icon) {
       <p style="color: white;">`+ skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
+    return div;
+}
+
+function generateTimelineItem(title, year, image, content){
+    var div = document.createElement('div');
+    div.classList.add(...['tl-item'])
+    let timelineHtml = `<div class="tl-bg" style="background-image: url(${image})"></div>
+    <div class="tl-year">
+        <p class="f2 heading--sanSerif">${year}</p>
+    </div>
+    <div class="tl-content">
+        <h1>${title}</h1>
+        <p>${content}</p>
+    </div>`
+    div.innerHTML = timelineHtml.trim();
     return div;
 }
 

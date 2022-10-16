@@ -116,7 +116,7 @@
                             <h4 class="sub-title">XIN CHÀO, TÔI LÀ</h4>
                             <h1 class="title user-name"></h1>
                             <p class="user-about-detail" style="color: white; font-size: 18px;"></p>
-                            <a class="main-btn" href="#work">MY UP-COMMING EVENTS</a>
+                            <div class="main-btn">MY UP-COMMING EVENTS</div>
                         </div> <!-- header content right -->
                     </div>
                     <div class="col-lg-6 offset-xl-1">
@@ -165,15 +165,19 @@
                             </div> <!-- section title -->
                         </div>
                     </div> <!-- row -->
-                    
                 </div>
             </div>
             <div style="position:relative;" id="youtube-video">
-            <!-- <iframe src="https://www.youtube.com/embed/Yj2iELI6OeI?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=Yj2iELI6OeI"></iframe> -->
-        </div>
+                <!-- <iframe src="https://www.youtube.com/embed/Yj2iELI6OeI?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=Yj2iELI6OeI"></iframe> -->
+            </div>
         </div>
     </section>
     <!--====== ABOUT PART ENDS ======-->
+    <!--====== TIMELINE PART STARTS ======-->
+    <section id="timeline">
+        
+    </section>
+    <!--====== TIMELINE PART END ======-->
     <!--====== SERVICES PART START ======-->
     <section id="service" class="services-area gray-bg pt-50 pb-50" style="background-color: #333333;">
         <div class="container">
@@ -203,8 +207,8 @@
         </div> <!-- container -->
     </section>
     <!--====== CALL TO ACTION PART ENDS ======-->
-     <!--====== LEARNING PART START ======-->
-     <section id="learning" class="learing-area pt-50 pb-50" style="background-color: #191919;">
+    <!--====== LEARNING PART START ======-->
+    <section id="learning" class="learing-area pt-50 pb-50" style="background-color: #191919;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -235,7 +239,6 @@
         </div> <!-- container -->
     </section>
     <!--====== WORK PART ENDS ======-->
-   
     <!--====== BLOG PART START ======-->
     <section id="blog" class="blog-area pt-50 pb-50" style="background-color: black;">
         <div class="container">
@@ -355,6 +358,18 @@
     <script>
         var a = 0;
 
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
+
         $(window).scroll(function () {
             //   if (document.body.scrollTop === 0) $('#video').play();
             //   if(document.body.scrollTop > $('#parallax').offset().top) $('.video').stop();
@@ -372,10 +387,10 @@
                             duration: 2000,
                             easing: 'swing',
                             step: function () {
-                                $this.text(Math.floor(this.countNum));
+                                $this.text(addCommas(`${Math.floor(this.countNum)}`));
                             },
                             complete: function () {
-                                $this.text(this.countNum);
+                                $this.text(addCommas(`${this.countNum}`));
                                 //alert('finished');
                             }
                         });
