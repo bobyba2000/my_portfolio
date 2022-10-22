@@ -233,14 +233,11 @@ function generateWorkItem(title, link, image) {
 function generateWorkItem2(title, link, image) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let workHtml = `<div class="single-work mt-30">
+    let workHtml = `<div class="single-work mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
     <div class="work-image">
         <img src="${image}" alt="Blog">
     </div>
-    <div class="work-content">
-        <h4 class="work-title"><a href="${link}" target="_blank">${title}</a></h4>
-        
-    </div>
+    
     </div>`;
     div.innerHTML = workHtml.trim();
     return div;
@@ -249,7 +246,7 @@ function generateWorkItem2(title, link, image) {
 function generateBlogItem(title, link, image, datePost) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let blogHtml = `<div class="single-blog mt-30">
+    let blogHtml = `<div class="single-blog mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
     <div class="blog-image">
         <img src="${image}" alt="Blog">
     </div>
@@ -265,7 +262,7 @@ function generateBlogItem(title, link, image, datePost) {
 function generateLearningItem(title, link, image) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let learingHtml = `<div class="single-learning mt-30">
+    let learingHtml = `<div class="single-learning mt-30" style="cursor: pointer;" onclick="window.open('${link}', '_blank');">
     <div class="learning-image">
         <img src="${image}" alt="learning">
     </div>
