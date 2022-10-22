@@ -32,7 +32,7 @@ async function changeInfo() {
     changeTimeline(userDB['timeline']);
 }
 
-function changeTimeline(userTimelineDB){
+function changeTimeline(userTimelineDB) {
     userTimeline = document.getElementById("timeline");
     var listTimelineDB = userTimelineDB['items'].filter(function (timeline) { return timeline['isActive'] == true });
     var listTimeline = listTimelineDB.map(e => generateTimelineItem(e['title'], e['year'], e['image'], e['content']));
@@ -118,7 +118,7 @@ function changeSkill(userDB) {
 
 function changeService(userServiceDB) {
     userService = document.getElementById("user-services");
-    var listService = userServiceDB['list'].map((e, id)=> generateServiceItem(e['title'], e['info'], e['icon'], e['image'], id));
+    var listService = userServiceDB['list'].map((e, id) => generateServiceItem(e['title'], e['info'], e['icon'], e['image'], id));
     userService.innerHTML = '';
     userService.replaceChildren(...listService);
 
@@ -162,7 +162,7 @@ function generateSkillItem(skill, value, icon) {
     div.classList.add(...['column']);
     let skillHtml = `
     <div class="card" id="counter-number">
-      <p><i class="fa fa-`+ icon + `"></i></p>
+      <p><i class="fa-solid fa-`+ icon + ` fa-2xl"></i></p>
       <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
       <p style="color: white;">`+ skill + `</p>
     </div>`;
@@ -170,7 +170,7 @@ function generateSkillItem(skill, value, icon) {
     return div;
 }
 
-function generateTimelineItem(title, year, image, content){
+function generateTimelineItem(title, year, image, content) {
     var div = document.createElement('div');
     div.classList.add(...['tl-item'])
     let timelineHtml = `<div class="tl-bg" style="background-image: url(${image})"></div>
@@ -178,7 +178,7 @@ function generateTimelineItem(title, year, image, content){
         <p class="f2 heading--sanSerif">${year}</p>
     </div>
     <div class="tl-content">
-        <h1>${title}</h1>
+        <h1 style="font-weight: bold">${title}</h1>
         <p>${content}</p>
     </div>`
     div.innerHTML = timelineHtml.trim();
@@ -192,20 +192,20 @@ function generateServiceItem(title, info, icon, image, id) {
         `<div class="service-background  mt-30" style="background-image: url('${image}')">
             <div class="single-service text-center">
                 <div>
-                <div class="service-icon">
-                    <i class="` + icon + `"></i>
+                    <div class="service-icon">
+                        <i class="` + icon + `"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">
+                            <div >` + title + `</div>
+                        </h4>
+                        <p>` + info + `</p>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h4 class="service-title">
-                        <div >` + title + `</div>
-                    </h4>
-                    <p>` + info + `</p>
-                </div>
-                </div>
-                <a class="main-btn" href="work-details.html?id=${id}" target="_blank"><span>Tìm hiểu ngay</span></div>
+                <a class="main-btn" href="work-details.html?id=${id}" target="_blank"><span>Tìm hiểu ngay</span></a>
             </div>
         </div> <!-- single service -->`
-    div.innerHTML = serviceHtml.trim();
+    div.innerHTML = serviceHtml;
     return div;
 }
 
@@ -274,7 +274,7 @@ function generateLearningItem(title, link, image) {
     </div>
     </div>`;
 
-    if(link == undefined || link==""){
+    if (link == undefined || link == "") {
         learingHtml = `<div class="single-learning mt-30">
     <div class="learning-image">
         <img src="${image}" alt="learning">
