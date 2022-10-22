@@ -2606,11 +2606,12 @@ p.form-message.error.form-message.error {
 }
 
 .single-learning {
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
   position: relative;
   border-radius: 5px;
+  transition: transform .2s ;
   overflow: hidden;
 }
 
@@ -2646,7 +2647,7 @@ p.form-message.error.form-message.error {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: black;
   padding: 25px;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
@@ -2697,8 +2698,20 @@ p.form-message.error.form-message.error {
   transform: scale(1.2);
 }
 
+.single-learning:hover{
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
+  box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
+}
+
 .single-learning:hover .learning-content {
-  background-color: white;
+  background-color: #e2b65b;
 }
 
 .single-learning:hover .learning-content .learning-title a {
@@ -2870,4 +2883,8 @@ p.form-message.error.form-message.error {
   transition: filter 0.5s ease, -webkit-filter 0.5s ease;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
+}
+
+#learning-info p{
+  color: black;
 }
