@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://kit.fontawesome.com/c28fcff1be.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script> 
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -65,11 +66,11 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active"><a class="page-scroll" href="#home">Trang chủ</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#about">Công việc</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="#timeline">Công việc</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#service">Cộng tác</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#learning">Học hỏi</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#work">Thành tựu</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#blog">Bài viết</a></li>
+                                    <!-- <li class="nav-item"><a class="page-scroll" href="#blog">Bài viết</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="#contact">Liên hệ</a></li>
                                 </ul>
                             </div> <!-- navbar collapse -->
@@ -97,9 +98,9 @@
             <!-- <div class="header-shape shape-six layer" data-depth="0.15">
                 <img src="assets/images/banner/shape/shape-4.png" alt="Shape">
             </div> header shape -->
-            <div class="header-shape shape-seven layer" data-depth="0.50">
+            <!-- <div class="header-shape shape-seven layer" data-depth="0.50">
                 <img src="assets/images/banner/shape/shape-5.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div> header shape -->
             <div class="header-shape shape-eight layer" data-depth="0.40">
                 <img src="assets/images/banner/shape/shape-3.png" alt="Shape">
             </div> <!-- header shape -->
@@ -147,7 +148,7 @@
     </header>
     <!--====== HEADER PART ENDS ======-->
     <!--====== ABOUT PART START ======-->
-    <section id="about" class="about-area pt-125 pb-50" style="background-color: black;">
+    <!-- <section id="about" class="about-area pt-125 pb-50" style="background-color: black;">
         <div class="video-container">
             <div class="overlay justify-content-center text-center" style="display: flex; align-items:flex-end;">
                 <div style="width: 100%;">
@@ -156,26 +157,20 @@
                             <div class="section-title text-center">
                                 <h2 class="title">HTD LÀM CÁI CHI?</h2>
                                 <p id="user-about-short" style="text-align:center;"></p>
-                                <!-- <div class="row align-items-center">
-                                <div class="col-lg-7" id="youtube-video"></div>
-                                <div class="col-lg-1 line-between" style="text-align: center;">
-                                    <div style="border-left: 3px solid white; height: 300px; position: relative; left: 50%;"></div>
-                                </div>  
-                            </div> -->
-                            </div> <!-- section title -->
+                                
+                            </div>
                         </div>
-                    </div> <!-- row -->
+                    </div> 
                 </div>
             </div>
             <div style="position:relative;" id="youtube-video">
-                <!-- <iframe src="https://www.youtube.com/embed/Yj2iELI6OeI?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=Yj2iELI6OeI"></iframe> -->
+                
             </div>
         </div>
-    </section>
+    </section> -->
     <!--====== ABOUT PART ENDS ======-->
     <!--====== TIMELINE PART STARTS ======-->
     <section id="timeline">
-        
     </section>
     <!--====== TIMELINE PART END ======-->
     <!--====== SERVICES PART START ======-->
@@ -194,6 +189,7 @@
         </div> <!-- container -->
     </section>
     <!--====== SERVICES PART ENDS ======-->
+    
     <!--====== CALL TO ACTION PART START ======-->
     <section id="call-to-action" class="call-to-action pt-50 pb-50 bg_cover" style="background-image: url(assets/images/call-to-action.jpg)">
         <div class="container">
@@ -240,20 +236,20 @@
     </section>
     <!--====== WORK PART ENDS ======-->
     <!--====== BLOG PART START ======-->
-    <section id="blog" class="blog-area pt-50 pb-50" style="background-color: black;">
+    <!-- <section id="blog" class="blog-area pt-50 pb-50" style="background-color: black;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title text-center pb-25">
                         <h2 class="title">BÀI VIẾT</h2>
                         <p id="blog-info"></p>
-                    </div> <!-- section title -->
+                    </div>
                 </div>
-            </div> <!-- row -->
+            </div>
             <div class="row justify-content-center" id="user-blog">
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
+            </div> 
+        </div> 
+    </section> -->
     <!--====== BLOG PART ENDS ======-->
     <!--====== CONTACT PART START ======-->
     <section id="contact" class="contact-area pt-50 pb-100 gray-bg" style="background-color: #333333;">
@@ -300,7 +296,36 @@
                     </div> <!-- contact box -->
                 </div>
             </div> <!-- row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-form pt-30">
+                        <form id="contact-form" onsubmit="return false">
+                            <div class="single-form">
+                                <input type="text" name="name" id="send-name" placeholder="Name">
+                            </div>
+                            <div class="single-form">
+                                <input type="email" name="email" id="send-email" placeholder="Email">
+                            </div>
+                            <div class="single-form">
+                                <textarea name="message" id="send-message" placeholder="Message"></textarea>
+                            </div>
+                            <p class="form-message"></p>
+                            <div class="single-form">
+                                <button class="main-btn" type="submit" onclick="sendEmail()">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-map mt-60">
+                        <div class="gmap_canvas">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125419.42263179395!2d106.6467328!3d10.7839488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f288ff20e59%3A0xc02687a6a500d066!2zR2EgU8OgaSBHw7JuLCBIbyBDaGkgTWluaCBDaXR5LCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1666823850051!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div> <!-- container -->
+        
     </section>
     <!--====== CONTACT PART ENDS ======-->
     <!--====== FOOTER PART START ======-->
@@ -355,6 +380,7 @@
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
+    
     <script>
         var a = 0;
 
@@ -369,6 +395,8 @@
             }
             return x1 + x2;
         }
+
+        
 
         $(window).scroll(function () {
             //   if (document.body.scrollTop === 0) $('#video').play();

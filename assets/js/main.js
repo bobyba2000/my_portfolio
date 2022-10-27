@@ -23,7 +23,7 @@ async function changeInfo() {
 
     changeRecentWork(userDB['recent_work']);
 
-    changeBlog(userDB['content']);
+    // changeBlog(userDB['content']);
 
     changeLearing(userDB['learning']);
 
@@ -54,8 +54,8 @@ function changeAbout(userAboutDB) {
 
     userYoutube = document.getElementById('youtube-video');
     listArray = userAboutDB['youtube_video'].split('/')
-    youtubeId = listArray[listArray.length - 1];
-    userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
+    // youtubeId = listArray[listArray.length - 1];
+    // userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
@@ -67,8 +67,8 @@ function changeAbout(userAboutDB) {
         userAboutDetail[i].innerHTML = userAboutDB['footer'];
     }
 
-    userAboutShort = document.getElementById("user-about-short");
-    userAboutShort.innerHTML = userAboutDB['introduce_short'];
+    // userAboutShort = document.getElementById("user-about-short");
+    // userAboutShort.innerHTML = userAboutDB['introduce_short'];
 
     // userDob = document.getElementById("user-dob");
     // userDob.innerText = userAboutDB['dob'];
@@ -189,11 +189,11 @@ function generateServiceItem(title, info, icon, image, id) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8', 'mt-30']);
     let serviceHtml =
-        `<div class="service-background  mt-30" style="background-image: url('${image}')">
+        `<div class="service-background  mt-30" style="background-image: url('${image}')" onclick="window.open('work-details.html?id=${id}', '_blank');">
             <div class="single-service text-center">
                 <div>
                     <div class="service-icon">
-                        <i class="` + icon + `"></i>
+                        <i class="fa-solid fa-` + icon + `"></i>
                     </div>
                     <div class="service-content">
                         <h4 class="service-title">
@@ -285,6 +285,17 @@ function generateLearningItem(title, link, image) {
     return div;
 }
 
+function sendEmail() {
+	Email.send({
+        SecureToken : "50293a03-5e29-4b1a-9a8a-0ad63ccf7be1",
+        To : "hoangtridung.htd@gmail.com" ,
+        From : "htdung.3.1.1998@gmail.com",
+        Subject : "Question from " + document.getElementById("send-name").value + ", Email: "+ document.getElementById("send-email").value,
+        Body : document.getElementById("send-message").value,
+    }).then(
+      message => alert(message)
+    );
+}
 
 
 (function ($) {
