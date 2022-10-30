@@ -3,7 +3,7 @@
 
 <head>
     <script src="https://kit.fontawesome.com/c28fcff1be.js" crossorigin="anonymous"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script> 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -69,6 +69,7 @@
                                     <li class="nav-item"><a class="page-scroll" href="#timeline">Công việc</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#service">Cộng tác</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#learning">Học hỏi</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="#event">Sự kiện</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#work">Thành tựu</a></li>
                                     <!-- <li class="nav-item"><a class="page-scroll" href="#blog">Bài viết</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="#contact">Liên hệ</a></li>
@@ -189,7 +190,6 @@
         </div> <!-- container -->
     </section>
     <!--====== SERVICES PART ENDS ======-->
-    
     <!--====== CALL TO ACTION PART START ======-->
     <section id="call-to-action" class="call-to-action pt-50 pb-50 bg_cover" style="background-image: url(assets/images/call-to-action.jpg)">
         <div class="container">
@@ -219,6 +219,63 @@
         </div> <!-- container -->
     </section>
     <!--====== LEARNING PART ENDS ======-->
+    <section id="event" class="pt-50 pb-50" style="background-color: black;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center  pb-25">
+                        <h2 class="title">SỰ KIỆN NỔI BẬT SẮP TỚI</h2>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+        </div>
+        <div id="eventCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+                <div class="carousel-item active">
+                    <div class="col-md-4 active">
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/id/237/200/300" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4 active">
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/id/27/200/300" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4 active">
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/id/23/200/300" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#eventCarousel" type="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#eventCarousel" type="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </section>
     <!--====== WORK PART START ======-->
     <section id="work" class="work-area pt-50 pb-50" style="background-color: #333333;">
         <div class="container">
@@ -325,7 +382,6 @@
                 </div>
             </div>
         </div> <!-- container -->
-        
     </section>
     <!--====== CONTACT PART ENDS ======-->
     <!--====== FOOTER PART START ======-->
@@ -380,7 +436,6 @@
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
-    
     <script>
         var a = 0;
 
@@ -396,7 +451,7 @@
             return x1 + x2;
         }
 
-        
+
 
         $(window).scroll(function () {
             //   if (document.body.scrollTop === 0) $('#video').play();

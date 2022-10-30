@@ -1407,7 +1407,7 @@ a.fill-div {
   cursor: pointer;
 }
 
-.single-service:hover a{
+.single-service:hover a {
   color: white;
 }
 
@@ -1522,21 +1522,21 @@ a.fill-div {
   box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.5);
   position: relative;
   border-radius: 5px;
-  transition: transform .2s ;
+  transition: transform .2s;
   overflow: hidden;
 }
 
-.single-work:hover{
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-  
-    -webkit-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
-    -moz-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
-    box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
-  
+.single-work:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
+  box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
+
 }
 
 .single-work .work-image {
@@ -2652,7 +2652,7 @@ p.form-message.error.form-message.error {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
   position: relative;
   border-radius: 5px;
-  transition: transform .2s ;
+  transition: transform .2s;
   overflow: hidden;
 }
 
@@ -2731,24 +2731,16 @@ p.form-message.error.form-message.error {
   transition: all 0.3s ease-out 0s;
 }
 
-.single-learning:hover .learning-image img {
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-.single-learning:hover{
+.single-learning:hover {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
-  box-shadow: 0px 0px 30px 0px rgba(226,182,91,0.8);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
+  box-shadow: 0px 0px 30px 0px rgba(226, 182, 91, 0.8);
 }
 
 .single-learning:hover .learning-content {
@@ -2790,13 +2782,14 @@ p.form-message.error.form-message.error {
   display: flex;
   background-color: #031625;
 }
+
 #timeline:hover .tl-item {
   width: 23.3333%;
 }
 
 .tl-item {
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   position: relative;
   width: 25%;
   height: 100vh;
@@ -2807,9 +2800,11 @@ p.form-message.error.form-message.error {
   -webkit-transition: width 0.5s ease;
   transition: width 0.5s ease;
 }
-.tl-item:before, .tl-item:after {
+
+.tl-item:before,
+.tl-item:after {
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   content: '';
   position: absolute;
   left: 0;
@@ -2817,34 +2812,39 @@ p.form-message.error.form-message.error {
   width: 100%;
   height: 100%;
 }
+
 .tl-item:after {
   background: rgba(0, 0, 0, 0.75);
   opacity: 1;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
+
 .tl-item:before {
   background: -webkit-linear-gradient(top, transparent 0%, black 75%);
   background: linear-gradient(to bottom, transparent 0%, black 75%);
   z-index: 1;
   opacity: 0;
   -webkit-transform: translate3d(0, 0, 0) translateY(50%);
-          transform: translate3d(0, 0, 0) translateY(50%);
+  transform: translate3d(0, 0, 0) translateY(50%);
   -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: opacity 0.5s ease, transform 0.5s ease;
   transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
 }
+
 .tl-item:hover {
   width: 80% !important;
 }
+
 .tl-item:hover:after {
   opacity: 0;
 }
+
 .tl-item:hover:before {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0) translateY(0);
-          transform: translate3d(0, 0, 0) translateY(0);
+  transform: translate3d(0, 0, 0) translateY(0);
   -webkit-transition: opacity 1s ease, -webkit-transform 1s ease 0.25s;
   transition: opacity 1s ease, -webkit-transform 1s ease 0.25s;
   transition: opacity 1s ease, transform 1s ease 0.25s;
@@ -2854,16 +2854,16 @@ p.form-message.error.form-message.error {
 .tl-item:hover .tl-content {
   opacity: 1;
   -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
   -webkit-transition: all 0.75s ease 0.5s;
   top: 20%;
   transition: all 0.75s ease 0.5s;
 }
 
-.tl-item:hover .tl-year{
+.tl-item:hover .tl-year {
   top: 10%;
   -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
   -webkit-transition: all 0.75s ease 0.5s;
   transition: all 0.75s ease 0.5s;
   left: 45%;
@@ -2871,22 +2871,23 @@ p.form-message.error.form-message.error {
 
 .tl-item:hover .tl-bg {
   -webkit-filter: grayscale(0);
-          filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 .tl-content {
   -webkit-transform: translate3d(0, 0, 0) translateY(25px);
-          transform: translate3d(0, 0, 0) translateY(25px);
+  transform: translate3d(0, 0, 0) translateY(25px);
   position: relative;
   z-index: 1;
   text-align: justify;
-    text-align-last: center;
+  text-align-last: center;
   margin: 0 1.618em;
   top: 55%;
   opacity: 0;
 }
+
 .tl-content h1 {
-  font-family: 'Pathway Gothic One',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: 'Pathway Gothic One', Helvetica Neue, Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   color: white;
   font-size: 1.44rem;
@@ -2898,20 +2899,21 @@ p.form-message.error.form-message.error {
   top: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   z-index: 1;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
+
 .tl-year p {
-  font-family: 'Pathway Gothic One',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: 'Pathway Gothic One', Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1.728rem;
   line-height: 1.75;
 }
 
 .tl-bg {
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2924,9 +2926,84 @@ p.form-message.error.form-message.error {
   transition: filter 0.5s ease;
   transition: filter 0.5s ease, -webkit-filter 0.5s ease;
   -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
-#learning-info p{
+.recent-work-info{
+  text-align: justify !important;
+  text-align-last: center !important;
+}
+
+#learning-info p {
   color: black;
+}
+
+@media (max-width: 768px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+  align-items: center;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+  
+  .carousel-inner .carousel-item-right.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(33.333%);
+  }
+  
+  .carousel-inner .carousel-item-left.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.333%);
+  }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+transform: translateX(0);
+}
+
+.carousel-item .card{
+  width: 100%;
+  height: 30em;
+  padding: 0%;
+  background-color: white;
+  border-width: 0;
+  opacity: 0.3;
+}
+
+.carousel-item .card .card-img-top{
+  height: 20em;
+}
+
+.carousel-item .card-title{
+  color: black;
+}
+
+.carousel-item .card-text{
+  color: black;
+  height: 4em;
+}
+
+.col-md-4.active .card{
+  opacity: 1;
+}
+
+.carousel-item .col-md-4.active .card{
+  height: 35em;
+
+}
+
+.carousel-item .col-md-4.active .card-text{
+  height: 8em;
 }
