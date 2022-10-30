@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script>
 </head>
 
 <body style="background-color: black;">
@@ -69,6 +72,7 @@
                                     <li class="nav-item"><a class="page-scroll" href="#timeline">Công việc</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#service">Cộng tác</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#learning">Học hỏi</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="#feedback">Phản hồi</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#event">Sự kiện</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#work">Thành tựu</a></li>
                                     <!-- <li class="nav-item"><a class="page-scroll" href="#blog">Bài viết</a></li> -->
@@ -219,61 +223,89 @@
         </div> <!-- container -->
     </section>
     <!--====== LEARNING PART ENDS ======-->
-    <section id="event" class="pt-50 pb-50" style="background-color: black;">
+    <section id="feedback" class="pt-50 pb-50" style="background-color: #333333">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="section-title text-center  pb-25">
-                        <h2 class="title">SỰ KIỆN NỔI BẬT SẮP TỚI</h2>
+                    <div class="section-title text-center pb-25">
+                        <h2 class="title">NHỮNG ĐIỀU GÓP Ý</h2>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
-        </div>
-        <div id="eventCarousel" class="carousel slide w-100" data-ride="carousel">
-            <div class="carousel-inner w-100" role="listbox">
-                <div class="carousel-item active">
-                    <div class="col-md-4 active">
-                        <div class="card">
-                            <img class="card-img-top" src="https://picsum.photos/id/237/200/300" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Đặt chỗ ngay</a>
-                            </div>
-                        </div>
+        </div> <!-- container -->
+        <div class="feedback-slider">
+            <div class="feedback-slider-wrapper flex" id="user-feedback">
+                <div class="feedback-slide flex">
+                    <div class="feedback-slide-image feedback-slider-link prev"><img src="https://goranvrban.com/codepen/img2.jpg">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="feedback-slide-content">
+                        <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                        <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="col-md-4 active">
-                        <div class="card">
-                            <img class="card-img-top" src="https://picsum.photos/id/27/200/300" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Đặt chỗ ngay</a>
-                            </div>
-                        </div>
+                <div class="feedback-slide flex">
+                    <div class="feedback-slide-image feedback-slider-link next">
+                        <iframe src="https://drive.google.com/file/d/1T1W3vT6rm3XPf_0vxtGHfXFxtC5KKCEl/preview" width="25vw" height="auto" allow="autoplay"></iframe>
+                        <!-- <div class="overlay"></div> -->
+                    </div>
+                    <div class="feedback-slide-content">
+                        <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                        <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="col-md-4 active">
-                        <div class="card">
-                            <img class="card-img-top" src="https://picsum.photos/id/23/200/300" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Đặt chỗ ngay</a>
-                            </div>
-                        </div>
+                <div class="feedback-slide flex">
+                    <div class="feedback-slide-image feedback-slider-link next"><img src="https://goranvrban.com/codepen/img5.jpg">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="feedback-slide-content">
+                        <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                        <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
+                    </div>
+                </div>
+                <div class="feedback-slide flex">
+                    <div class="feedback-slide-image feedback-slider-link next"><img src="https://goranvrban.com/codepen/img6.jpg">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="feedback-slide-content">
+                        <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                        <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#eventCarousel" type="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#eventCarousel" type="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
+            <div class="arrows">
+                <a href="#" title="Previous" class="arrow feedback-slider-link prev"></a>
+                <a href="#" title="Next" class="arrow feedback-slider-link next"></a>
+            </div>
+        </div>
+    </section>
+    <section id="event">
+        <div id="app" class="wrapper" v-cloak v-bind:class="{'is-previous': isPreviousSlide, 'first-load': isFirstLoad}">
+            <div class="slide-wrapper" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-bind:style="{ 'z-index': (slides.length - index), 'background-image': 'url(' + slide.bgImg + ')' }">
+                <div class="slide-inner">
+                    <div class="slide-bg-text">
+                        <p>{{ slide.headlineFirstLine }}</p>
+                        <p>{{ slide.headlineSecondLine }}</p>
+                    </div>
+                    <!-- <div class="slide-rect-filter">
+                        <div class="slide-rect" v-bind:style="{'border-image-source': 'url(' + slide.rectImg + ')'}"></div>
+                    </div> -->
+                    <div class="slide-content">
+                        <h1 class="slide-content-text">
+                            <p>{{ slide.headlineFirstLine }}</p>
+                            <p class="pt-10" style="font-size: 24px;">{{ slide.headlineSecondLine }}</p>
+                        </h1>
+                        <a class="main-btn" style="color: black; margin-top: 20px; cursor: pointer;">Đặt chỗ ngay</a>
+                    </div>
+                    <h2 class="slide-side-text"><span>{{ slide.sublineFirstLine }}</span></h2>
+                </div>
+            </div>
+            <div class="controls-container">
+                <button class="controls-button" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)">{{ slide.headlineFirstLine }}</button>
+            </div>
+            <div class="pagination-container">
+                <span class="pagination-item" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)"></span>
+            </div>
         </div>
     </section>
     <!--====== WORK PART START ======-->

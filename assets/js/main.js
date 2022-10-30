@@ -30,6 +30,10 @@ async function changeInfo() {
     changeSkill(userDB);
 
     changeTimeline(userDB['timeline']);
+
+    changeEvent(userDB['event']);
+
+    changeFeedback(userDB['feedback']);
 }
 
 function changeTimeline(userTimelineDB) {
@@ -38,6 +42,76 @@ function changeTimeline(userTimelineDB) {
     var listTimeline = listTimelineDB.map(e => generateTimelineItem(e['title'], e['year'], e['image'], e['content']));
     userTimeline.innerHTML = '';
     userTimeline.replaceChildren(...listTimeline);
+}
+
+function calcDateDiff(event) {
+    if (event === undefined) {
+        return -1;
+    }
+    var date1 = Date.parse(event['date'])
+    var date2 = Date.now()
+    var Difference_In_Time = date1 - date2;
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    return Difference_In_Days | 0
+}
+
+function changeEvent(userEventDB) {
+    userEvent = document.getElementById("user_event");
+    var listEventDB = userEventDB['items'].filter(function (event) { return event['isActive'] == true });
+    
+    var app = new Vue({
+        el: '#app',
+        data: {
+            currentSlide: 0,
+            isPreviousSlide: false,
+            isFirstLoad: true,
+            slides: listEventDB.map((e) => {
+                return {
+                    headlineFirstLine: e['title'],
+                    headlineSecondLine: e['date'],
+                    sublineFirstLine: e['title'],
+                    sublineSecondLine: e['date'],
+                    bgImg: e['image'],
+                    rectImg: e['image']
+                }
+            })
+        },
+        mounted: function () {
+            var productRotatorSlide = document.getElementById("app");
+            var startX = 0;
+            var endX = 0;
+
+            productRotatorSlide.addEventListener("touchstart", (event) => startX = event.touches[0].pageX);
+
+            productRotatorSlide.addEventListener("touchmove", (event) => endX = event.touches[0].pageX);
+
+            productRotatorSlide.addEventListener("touchend", function (event) {
+                var threshold = startX - endX;
+
+                if (threshold < 150 && 0 < this.currentSlide) {
+                    this.currentSlide--;
+                }
+                if (threshold > -150 && this.currentSlide < this.slides.length - 1) {
+                    this.currentSlide++;
+                }
+            }.bind(this));
+        },
+        methods: {
+            updateSlide(index) {
+                index < this.currentSlide ? this.isPreviousSlide = true : this.isPreviousSlide = false;
+                this.currentSlide = index;
+                this.isFirstLoad = false;
+            }
+        }
+    })
+}
+
+function changeFeedback(userFeedbackDB){
+    userFeedback = document.getElementById("user-feedback");
+    var listFeedbackDB = userFeedbackDB['items'].filter(function (feedback) { return feedback['isActive'] == true });
+    var listFeedback = listFeedbackDB.map(e => generateFeedbackItem(e['title'], e['content'], e['video']))
+    userFeedback.innerHTML = '';
+    userFeedback.replaceChildren(...listFeedback)
 }
 
 function changeAbout(userAboutDB) {
@@ -170,6 +244,22 @@ function generateSkillItem(skill, value, icon) {
     return div;
 }
 
+function generateFeedbackItem(title, content, video){
+    var div = document.createElement('div')
+    div.classList.add(...['feedback-slide', 'flex'])
+    let feedbackHtml = `
+    <div class="feedback-slide-image feedback-slider-link next">
+        ${video}
+        <!-- <div class="overlay"></div> -->
+    </div>
+    <div class="feedback-slide-content">
+        <div class="feedback-slide-title">${title}</div>
+        <div class="feedback-slide-text">${content}</div>
+    </div>`
+    div.innerHTML = feedbackHtml.trim();
+    return div;
+}
+
 function generateTimelineItem(title, year, image, content) {
     var div = document.createElement('div');
     div.classList.add(...['tl-item'])
@@ -183,6 +273,32 @@ function generateTimelineItem(title, year, image, content) {
     </div>`
     div.innerHTML = timelineHtml.trim();
     return div;
+}
+
+var countEvent = 0;
+
+function generateEventItem(title, date, image, registerLink, dateLeft) {
+    var div = document.createElement('div')
+    if (countEvent === 0) {
+        div.classList.add(...['carousel-item', 'active'])
+    } else {
+        div.classList.add(...['carousel-item'])
+    }
+    let eventHtml = `
+    <div class="col-md-4 active">
+        <div class="card">
+            <img class="card-img-top" src="${image}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text event-date">${date}</p>
+                <p class="card-text event-dateleft" style="color: red">${dateLeft} ngày còn lại</p>
+                <a class="main-btn" href="${registerLink}" target="_blank"><span>Đặt chỗ ngay</span></a>
+            </div>
+        </div>
+    </div>`
+    div.innerHTML = eventHtml.trim()
+    countEvent++;
+    return div
 }
 
 function generateServiceItem(title, info, icon, image, id) {
@@ -427,27 +543,56 @@ function sendEmail() {
     $('.counter').counterUp({ delay: 10, time: 1600, }); $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } }); $(window).on('scroll', function (event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } }); $('.back-to-top').on('click', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: 0, }, 1500); });
 }(jQuery));
 
-$('#eventCarousel').carousel({
-    interval: 0
-})
-
-$('.carousel .carousel-item').each(function () {
-    var minPerSlide = 3;
-    var next = $(this).next();
-    if (!next.length) {
-        next = $(this).siblings(':first');
-    }
-    var clone = next.children(':first-child').clone();
-    clone.removeClass('active');
-    clone.appendTo($(this));
-
-    for (var i = 0; i < minPerSlide; i++) {
-        next = next.next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
+( function($) {
+  
+    $(document).ready(function() {
+      
+      var s           = $('.feedback-slider'),
+          sWrapper    = s.find('.feedback-slider-wrapper'),
+          sItem       = s.find('.feedback-slide'),
+          btn         = s.find('.feedback-slider-link'),
+          sWidth      = sItem.width(),
+          sCount      = sItem.length,
+          slide_date  = s.find('.feedback-slide-date'),
+          slide_title = s.find('.feedback-slide-title'),
+          slide_text  = s.find('.feedback-slide-text'),
+          slide_more  = s.find('.feedback-slide-more'),
+          slide_image = s.find('.feedback-slide-image img'),
+          sTotalWidth = sCount * sWidth;
+      
+      sWrapper.css('width', sTotalWidth);
+      sWrapper.css('width', sTotalWidth);
+      
+      var clickCount  = 0;
+      
+      btn.on('click', function(e) {
+        e.preventDefault();
+  
+        if( $(this).hasClass('next') ) {
+          
+          ( clickCount < ( sCount - 1 ) ) ? clickCount++ : clickCount = 0;
+        } else if ( $(this).hasClass('prev') ) {
+          
+          ( clickCount > 0 ) ? clickCount-- : ( clickCount = sCount - 1 );
         }
-        clone = next.children(':first-child').clone();
-        clone.removeClass('active');
-        clone.appendTo($(this));
-    }
-});
+        TweenMax.to(sWrapper, 0.4, {x: '-' + ( sWidth * clickCount ) })
+  
+  
+        //CONTENT ANIMATIONS
+  
+        var fromProperties = {autoAlpha:0, x:'-50', y:'-10'};
+        var toProperties = {autoAlpha:0.8, x:'0', y:'0'};
+  
+        TweenLite.fromTo(slide_image, 1, {autoAlpha:0, y:'40'}, {autoAlpha:1, y:'0'});
+        TweenLite.fromTo(slide_date, 0.4, fromProperties, toProperties);
+        TweenLite.fromTo(slide_title, 0.6, fromProperties, toProperties);
+        TweenLite.fromTo(slide_text, 0.8, fromProperties, toProperties);
+        TweenLite.fromTo(slide_more, 1, fromProperties, toProperties);
+  
+      });
+            
+    });
+  })(jQuery);
+  
+  $('.overlay').addClass('overlay-blue');
+

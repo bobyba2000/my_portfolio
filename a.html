@@ -4,93 +4,62 @@
 <head>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/test.css">
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script>
 </head>
 
-<body style="text-align:center">
-    <div class="container-fluid">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-            <div class="carousel-inner row w-100 mx-auto" style="display: flex;" role="listbox">
-                <div class="carousel-item col-md-3  active">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 1" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=1" alt="slide 1">
-                            </a>
-                        </div>
-                    </div>
+<body>
+    <div class="feedback-slider">
+        <div class="feedback-slider-wrapper flex">
+            <div class="feedback-slide flex">
+                <div class="feedback-slide-image feedback-slider-link prev"><img src="https://goranvrban.com/codepen/img2.jpg">
+                    <div class="overlay"></div>
                 </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 3" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=2" alt="slide 2">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 4" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=3" alt="slide 3">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 5" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=4" alt="slide 4">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 6" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=5" alt="slide 5">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 7" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=6" alt="slide 6">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 8" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=7" alt="slide 7">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-3  ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 2" class="thumb">
-                                <img class="img-fluid mx-auto d-block" src="https://via.placeholder.com/600x400?text=8" alt="slide 8">
-                            </a>
-                        </div>
-                    </div>
+                <div class="feedback-slide-content">
+                    <div class="feedback-slide-date">30.07.2017.</div>
+                    <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                    <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
+                    <div class="feedback-slide-more">READ MORE</div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="feedback-slide flex">
+                <div class="feedback-slide-image feedback-slider-link next"><img src="https://goranvrban.com/codepen/img3.jpg">
+                    <div class="overlay"></div>
+                </div>
+                <div class="feedback-slide-content">
+                    <div class="feedback-slide-date">30.08.2017.</div>
+                    <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                    <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
+                    <div class="feedback-slide-more">READ MORE</div>
+                </div>
+            </div>
+            <div class="feedback-slide flex">
+                <div class="feedback-slide-image feedback-slider-link next"><img src="https://goranvrban.com/codepen/img5.jpg">
+                    <div class="overlay"></div>
+                </div>
+                <div class="feedback-slide-content">
+                    <div class="feedback-slide-date">30.09.2017.</div>
+                    <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                    <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
+                    <div class="feedback-slide-more">READ MORE</div>
+                </div>
+            </div>
+            <div class="feedback-slide flex">
+                <div class="feedback-slide-image feedback-slider-link next"><img src="https://goranvrban.com/codepen/img6.jpg">
+                    <div class="overlay"></div>
+                </div>
+                <div class="feedback-slide-content">
+                    <div class="feedback-slide-date">30.10.2017.</div>
+                    <div class="feedback-slide-title">LOREM IPSUM DOLOR SITE MATE, AD EST ABHORREANT</div>
+                    <div class="feedback-slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex. </div>
+                    <div class="feedback-slide-more">READ MORE</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrows">
+            <a href="#" title="Previous" class="arrow feedback-slider-link prev"></a>
+            <a href="#" title="Next" class="arrow feedback-slider-link next"></a>
         </div>
     </div>
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
