@@ -71,6 +71,7 @@ function changeEvent(userEventDB) {
                     headlineSecondLine: e['date'],
                     sublineFirstLine: e['title'],
                     sublineSecondLine: e['date'],
+                    subHeadlineFirstLine: e['subTitle'],
                     bgImg: e['image'],
                     rectImg: e['image']
                 }
@@ -223,7 +224,7 @@ function changeBlog(userBlogDB) {
 
 function changeLearing(userLearningDB) {
     document.getElementById('learning-info').innerHTML = userLearningDB['introduce'];
-
+    document.getElementById('learning').style.background = `rgba(255, 255, 255, 0.8) url('${userLearningDB['image_background']}')`
     userLearning = document.getElementById("user-learning");
     var listLearningDB = userLearningDB['posts'].filter(function (learning) { return learning['isActive'] == true });
     var listLearning = listLearningDB.map(e => generateLearningItem(e['title'], e['link'], e['image']));

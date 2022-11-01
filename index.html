@@ -122,7 +122,7 @@
                             <h4 class="sub-title">XIN CHÀO, TÔI LÀ</h4>
                             <h1 class="title user-name"></h1>
                             <p class="user-about-detail" style="color: white; font-size: 18px;"></p>
-                            <div class="main-btn">MY UP-COMMING EVENTS</div>
+                            <div class="main-btn" href="#event">MY UP-COMMING EVENTS</div>
                         </div> <!-- header content right -->
                     </div>
                     <div class="col-lg-6 offset-xl-1">
@@ -179,7 +179,7 @@
     </section>
     <!--====== TIMELINE PART END ======-->
     <!--====== SERVICES PART START ======-->
-    <section id="service" class="services-area gray-bg pt-50 pb-50" style="background-color: #333333;">
+    <section id="service" class="services-area gray-bg pt-50 pb-50" style="background-color: black;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -208,7 +208,7 @@
     </section>
     <!--====== CALL TO ACTION PART ENDS ======-->
     <!--====== LEARNING PART START ======-->
-    <section id="learning" class="learing-area pt-50 pb-50" style="background-color: whitesmoke;">
+    <section id="learning" class="learing-area pt-50 pb-50" style="background-image: url(assets/images/call-to-action.jpg)" >
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -233,7 +233,7 @@
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
-        <div class="feedback-slider" style="overflow-x: hidden; height: 40vh">
+        <div class="feedback-slider" style="overflow: hidden; height: 40vh">
             <div class="feedback-slider-wrapper flex" id="user-feedback">
                 <div class="feedback-slide flex">
                     <div class="feedback-slide-image feedback-slider-link prev"><img src="https://goranvrban.com/codepen/img2.jpg">
@@ -295,13 +295,13 @@
                             <p>{{ slide.headlineFirstLine }}</p>
                             <p class="pt-10" style="font-size: 24px;">{{ slide.headlineSecondLine }}</p>
                         </h1>
-                        <a class="main-btn" style="color: black; margin-top: 20px; cursor: pointer;">Đặt chỗ ngay</a>
+                        <a class="main-btn" style="color: black; margin-top: 20px; cursor: pointer; max-width: 200px;">Đặt chỗ ngay</a>
                     </div>
                     <h2 class="slide-side-text"><span>{{ slide.sublineFirstLine }}</span></h2>
                 </div>
             </div>
             <div class="controls-container">
-                <button class="controls-button" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)">{{ slide.headlineFirstLine }}</button>
+                <button class="controls-button" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)">{{ slide.subHeadlineFirstLine }}</button>
             </div>
             <div class="pagination-container">
                 <span class="pagination-item" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)"></span>
