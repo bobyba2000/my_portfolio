@@ -72,6 +72,7 @@ function changeEvent(userEventDB) {
                     sublineFirstLine: e['title'],
                     sublineSecondLine: e['date'],
                     subHeadlineFirstLine: e['subTitle'],
+                    content: e['content'],
                     bgImg: e['image'],
                     rectImg: e['image']
                 }
@@ -110,7 +111,7 @@ function changeEvent(userEventDB) {
 function changeFeedback(userFeedbackDB){
     userFeedback = document.getElementById("user-feedback");
     var listFeedbackDB = userFeedbackDB['items'].filter(function (feedback) { return feedback['isActive'] == true });
-    var listFeedback = listFeedbackDB.map(e => generateFeedbackItem(e['title'], e['content'], e['video']))
+    var listFeedback = listFeedbackDB.map(e => generateFeedbackItem(e['title'], e['subTitle'], e['content'], e['video']))
     userFeedback.innerHTML = '';
     userFeedback.replaceChildren(...listFeedback)
 }
@@ -245,7 +246,7 @@ function generateSkillItem(skill, value, icon) {
     return div;
 }
 
-function generateFeedbackItem(title, content, video){
+function generateFeedbackItem(title, subTitle, content, video){
     var div = document.createElement('div')
     div.classList.add(...['feedback-slide', 'flex'])
     let feedbackHtml = `
@@ -255,6 +256,7 @@ function generateFeedbackItem(title, content, video){
     </div>
     <div class="feedback-slide-content">
         <div class="feedback-slide-title">${title}</div>
+        <div class="feedback-slide-text" style="font-style:italic; font-size:14px; color: white; padding-bottom: 16px">${subTitle}</div>
         <div class="feedback-slide-text">${content}</div>
     </div>`
     div.innerHTML = feedbackHtml.trim();
