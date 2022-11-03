@@ -3047,20 +3047,24 @@ body ::-moz-selection {
   color: #fff;
   margin-top: 5rem;
   position: absolute;
-  top: 50%;
-  left: calc(13vw + (0.7) * 48vh);
+  top: 15vh;
+  left: calc((0.7) * 20vw);
+  right: calc((0.7) * 20vw);
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
 }
 @media (max-width: 1000px) {
   .slide-content {
-    left: calc(13vw + 1rem);
+    top: 10vh;
+    transform: translateY(-30%);
+    left: calc((0.7) * 16vw);
+    right: calc( (0.7) * 16vw);
   }
 }
 @media (max-height: 730px) {
   .slide-content {
-    top: 10%;
+    top: 10vh;
     transform: translateY(-30%);
     left: calc((0.7) * 16vw);
     right: calc( (0.7) * 16vw);
