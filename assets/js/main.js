@@ -339,7 +339,7 @@ function generateServiceItem(title, info, icon, image, id) {
                         <p>` + info + `</p>
                     </div>
                 </div>
-               
+                <a class="main-btn page-scroll" href="#learning" ><span>Tìm hiểu ngay</span></a>
             </div>
         </div> <!-- single service -->`
     }
