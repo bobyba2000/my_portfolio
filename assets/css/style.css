@@ -2053,6 +2053,13 @@ p.form-message.error.form-message.error {
   background-color: black;
 }
 
+.footer-copyright.home{
+  background-color: white;
+}
+.footer-copyright.home .copyright-text p {
+  color: black;
+}
+
 .footer-copyright .copyright-text p {
   color: #fff;
 }
@@ -3053,9 +3060,10 @@ body ::-moz-selection {
 }
 @media (max-height: 730px) {
   .slide-content {
-    top: 30%;
+    top: 10%;
     transform: translateY(-30%);
-    left: calc(9vw + (0.7) * 16vw);
+    left: calc((0.7) * 16vw);
+    right: calc( (0.7) * 16vw);
   }
 }
 .slide-content-text {
@@ -3890,4 +3898,13 @@ div.overlay-blue:hover {
 
 .slide-content-text p{
   color: #000;
+}
+
+.media-icon{
+  color: white !important;
+  background-color: black !important;
+}
+
+.media-icon:hover{
+  color: #f8d851 !important;
 }

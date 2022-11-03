@@ -238,9 +238,9 @@ function generateSkillItem(skill, value, icon) {
     div.classList.add(...['column']);
     let skillHtml = `
     <div class="card" id="counter-number">
-      <p><i class="fa-solid fa-`+ icon + ` fa-2xl"></i></p>
-      <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
-      <p style="color: white;">`+ skill + `</p>
+      <p><i class="fa-solid fa-`+ icon + ` fa-2xl" style="color: black"></i></p>
+      <h3 style="color:black"><span class="counter-value" data-count="`+ value + `" style="color: black">0</span>+</h3>
+      <p style="color: black;">`+ skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
