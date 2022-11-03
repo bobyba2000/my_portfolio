@@ -307,7 +307,7 @@ function generateEventItem(title, date, image, registerLink, dateLeft) {
 function generateServiceItem(title, info, icon, image, id) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-6', 'col-sm-8', 'mt-30']);
-    let serviceHtml =
+    var serviceHtml =
         `<div class="service-background  mt-30" style="background-image: url('${image}')" onclick="window.open('work-details.html?id=${id}', '_blank');">
             <div class="single-service text-center">
                 <div>
@@ -324,6 +324,25 @@ function generateServiceItem(title, info, icon, image, id) {
                 <a class="main-btn" href="work-details.html?id=${id}" target="_blank"><span>Tìm hiểu ngay</span></a>
             </div>
         </div> <!-- single service -->`
+    if(id == 2){
+        serviceHtml =
+        `<div class="service-background  mt-30" style="background-image: url('${image}')">
+            <div class="single-service no-pointer text-center">
+                <div>
+                    <div class="service-icon">
+                        <i class="fa-solid fa-` + icon + `"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">
+                            <div >` + title + `</div>
+                        </h4>
+                        <p>` + info + `</p>
+                    </div>
+                </div>
+               
+            </div>
+        </div> <!-- single service -->`
+    }
     div.innerHTML = serviceHtml;
     return div;
 }

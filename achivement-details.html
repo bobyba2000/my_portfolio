@@ -157,6 +157,20 @@
     <script>
         var a = 0;
 
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
+
+
+
         $(window).scroll(function () {
             //   if (document.body.scrollTop === 0) $('#video').play();
             //   if(document.body.scrollTop > $('#parallax').offset().top) $('.video').stop();
@@ -174,10 +188,10 @@
                             duration: 2000,
                             easing: 'swing',
                             step: function () {
-                                $this.text(Math.floor(this.countNum));
+                                $this.text(addCommas(`${Math.floor(this.countNum)}`));
                             },
                             complete: function () {
-                                $this.text(this.countNum);
+                                $this.text(addCommas(`${this.countNum}`));
                                 //alert('finished');
                             }
                         });

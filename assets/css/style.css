@@ -1406,6 +1406,10 @@ a.fill-div {
   cursor: pointer;
 }
 
+.single-service.no-pointer:hover{
+  cursor: auto !important;
+}
+
 .single-service:hover a {
   color: white;
 }
