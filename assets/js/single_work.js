@@ -68,6 +68,9 @@ function changeContent(userServiceDB) {
     </div>
 </div>`;
 
+    var registerBtn = document.getElementById("register-btn");
+    registerBtn.innerHTML = `<a class="main-btn work-detail" href="${value['register_link']}" target="_blank" style="margin-top: 20px; cursor: pointer; max-width: 200px;">Cộng tác ngay</a>`
+
     headerHtml = document.getElementById("work-header");
     headerHtml.innerHTML = headerString;
 }
