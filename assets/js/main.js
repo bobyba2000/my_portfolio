@@ -208,7 +208,7 @@ function changeRecentWork(userRecentWorkDB) {
 
     userWork = document.getElementById("user-works");
     var listWorkDB = userRecentWorkDB['posts'].filter(function (work) { return work['isActive'] == true });
-    var listWork = listWorkDB.map(e => generateWorkItem2(e['title'], e['link'], e['image']));
+    var listWork = listWorkDB.map((e, id) => generateWorkItem2(e['title'], e['link'], e['image'], id));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
 }
@@ -368,15 +368,23 @@ function generateWorkItem(title, link, image) {
     return div;
 }
 
-function generateWorkItem2(title, link, image) {
+function generateWorkItem2(title, link, image, id) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let workHtml = `<div class="single-work mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
+    var workHtml = `<div class="single-work mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
     <div class="work-image">
         <img src="${image}" alt="Blog">
     </div>
     
     </div>`;
+    if(id == 4 || id == 7){
+        workHtml = `<div class="single-work mt-30">
+    <div class="work-image">
+        <img src="${image}" alt="Blog">
+    </div>
+    
+    </div>`;
+    }
     div.innerHTML = workHtml.trim();
     return div;
 }
