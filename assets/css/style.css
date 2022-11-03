@@ -3916,3 +3916,9 @@ div.overlay-blue:hover {
 .media-icon:hover{
   color: #f8d851 !important;
 }
+
+.main-btn.work-detail:hover{
+  background-color: #000 !important;
+  
+  color: white !important;
+}
