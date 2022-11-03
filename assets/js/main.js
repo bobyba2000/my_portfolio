@@ -139,10 +139,10 @@ function changeFeedback(userFeedbackDB){
   
         if( $(this).hasClass('next') ) {
           
-          ( clickCount < ( sCount - 1 ) ) ? clickCount++ : clickCount = 0;
+          ( clickCount < ( sCount ) ) ? clickCount++ : clickCount = 0;
         } else if ( $(this).hasClass('prev') ) {
           
-          ( clickCount > 0 ) ? clickCount-- : ( clickCount = sCount - 1 );
+          ( clickCount > 0 ) ? clickCount-- : ( clickCount = sCount );
         }
         TweenMax.to(sWrapper, 0.4, {x: '-' + ( sWidth * clickCount ) })
   
