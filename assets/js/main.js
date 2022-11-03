@@ -74,7 +74,8 @@ function changeEvent(userEventDB) {
                     subHeadlineFirstLine: e['subTitle'],
                     content: e['content'],
                     bgImg: e['image'],
-                    rectImg: e['image']
+                    rectImg: e['image'],
+                    link: e['registerLink']
                 }
             })
         },
@@ -268,7 +269,7 @@ function generateTimelineItem(title, year, image, content) {
     div.classList.add(...['tl-item'])
     let timelineHtml = `<div class="tl-bg" style="background-image: url(${image})"></div>
     <div class="tl-year">
-        <p class="f2 heading--sanSerif">${year}</p>
+        <p class="f2 heading--sanSerif" style="font-weight: bold">${year}</p>
     </div>
     <div class="tl-content">
         <h1 style="font-weight: bold">${title}</h1>
