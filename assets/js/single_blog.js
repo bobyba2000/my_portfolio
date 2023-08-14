@@ -78,14 +78,67 @@ function changeRecentWork(userRecentWorkDB) {
 function changeBlog(userBlogDB) {
     const params = new URLSearchParams(window.location.search)
     const id = params.get('id');
+    console.log(id);
     currentBlog = userBlogDB['posts'][id];
     document.getElementById("blog-image").src = currentBlog['image'];
     document.getElementById("blog-title").innerHTML = currentBlog['title'];
     document.getElementById("blog-date").innerHTML = '<i class="lni-calendar"></i> ' + currentBlog['datePost']
     document.getElementById("blog-link").src = currentBlog['content'] + '?embedded=true';
+    switch (id) {
+        case '2':
+            document.getElementById("blog-link").style.height = "1450px";
+            break;
+        case '1':
+            document.getElementById("blog-link").style.height = "1550px";
+            break;
+        case '3':
+            document.getElementById("blog-link").style.height = "1050px";
+            break;
+        case '4':
+            document.getElementById("blog-link").style.height = "1850px";
+            break;
+        case '5':
+            document.getElementById("blog-link").style.height = "2500px";
+            break;
+        case '6':
+            document.getElementById("blog-link").style.height = "1050px";
+            break;
+        case '7':
+            document.getElementById("blog-link").style.height = "1350px";
+            break;
+        case '8':
+            document.getElementById("blog-link").style.height = "1350px";
+            break;
+        case '9':
+            document.getElementById("blog-link").style.height = "1300px";
+            break;
+        case '10':
+            document.getElementById("blog-link").style.height = "1000px";
+            break;
+        case '11':
+            document.getElementById("blog-link").style.height = "1300px";
+            break;
+        case '12':
+            document.getElementById("blog-link").style.height = "1850px";
+            break;
+        case '13':
+            document.getElementById("blog-link").style.height = "1850px";
+            break;
+        case '14':
+            document.getElementById("blog-link").style.height = "1300px";
+            break;
+        case '15':
+            document.getElementById("blog-link").style.height = "1350px";
+            break;
+        case '16':
+            document.getElementById("blog-link").style.height = "1850px";
+            break;
+        default:
+            document.getElementById("blog-link").style.height = "900px";
+    }
 
     userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
+    var listBlogDB = userBlogDB['posts'].filter(function(blog) { return blog['isActive'] == true });
     var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
@@ -96,9 +149,9 @@ function generateSkillItem(skill, value, icon) {
     div.classList.add(...['column']);
     let skillHtml = `
     <div class="card" id="counter-number">
-      <p><i class="fa fa-`+ icon + `"></i></p>
-      <h3><span class="counter-value" data-count="`+ value + `">0</span>+</h3>
-      <p style="color: white;">`+ skill + `</p>
+      <p><i class="fa fa-` + icon + `"></i></p>
+      <h3><span class="counter-value" data-count="` + value + `">0</span>+</h3>
+      <p style="color: white;">` + skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
@@ -123,7 +176,7 @@ function generateWorkItem(title, link, image) {
         <div class="work-content">
             <h3 class="work-title">${title}</h3>
             <ul>
-                <li><a class="image-popup" target="_blank" href="${image}"><i
+                <li><a class="image-popup" href="${image}"><i
                             class="lni-plus"></i></a></li>
                 <li><a href="${link}"><i class="lni-link"></i></a></li>
             </ul>
@@ -138,11 +191,11 @@ function generateBlogItem(title, link, image, datePost) {
     let blogHtml = `
     <div class="single-sidebar-post d-flex">
         <div class="post-thumb">
-            <a href="`+ link + `"><img style="width: 70px; height: 68px;" src="` + image + `" alt="Post"></a>
+            <a href="` + link + `"><img style="width: 70px; height: 68px;" src="` + image + `" alt="Post"></a>
         </div>
         <div class="post-content media-body">
-            <h5 class="post-title"><a href="#">`+ title + `</a></h5>
-            <span><i class="lni-calendar"></i>  `+ datePost + `</span>
+            <h5 class="post-title"><a href="#">` + title + `</a></h5>
+            <span><i class="lni-calendar"></i>  ` + datePost + `</span>
         </div>
     </div>
 `;
@@ -152,37 +205,37 @@ function generateBlogItem(title, link, image, datePost) {
 
 
 
-(function ($) {
+(function($) {
 
     "use strict";
 
     //===== Prealoder
 
-    $(window).on('load', function (event) {
+    $(window).on('load', function(event) {
         $('.preloader').delay(500).fadeOut(500);
     });
 
     //===== Mobile Menu 
 
-    $(".navbar-toggler").on('click', function () {
+    $(".navbar-toggler").on('click', function() {
         $(this).toggleClass('active');
     });
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-toggler").removeClass('active');
     });
 
 
     //===== close navbar-collapse when a  clicked
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-collapse").removeClass("show");
     });
 
 
     //===== Sticky
 
-    $(window).on('scroll', function (event) {
+    $(window).on('scroll', function(event) {
         var scroll = $(window).scrollTop();
         if (scroll < 10) {
             $(".navigation").removeClass("sticky");
@@ -196,10 +249,10 @@ function generateBlogItem(title, link, image, datePost) {
 
     var scrollLink = $('.page-scroll');
     // Active link switching
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         var scrollbarLocation = $(this).scrollTop();
 
-        scrollLink.each(function () {
+        scrollLink.each(function() {
 
             var sectionOffset = $(this.hash).offset().top - 73;
 
@@ -226,7 +279,7 @@ function generateBlogItem(title, link, image, datePost) {
     //===== Progress Bar
 
     if ($('.progress-line').length) {
-        $('.progress-line').appear(function () {
+        $('.progress-line').appear(function() {
             var el = $(this);
             var percent = el.data('width');
             $(el).css('width', percent + '%');
@@ -255,7 +308,7 @@ function generateBlogItem(title, link, image, datePost) {
     //===== Back to top
 
     // Show or hide the sticky footer button
-    $(window).on('scroll', function (event) {
+    $(window).on('scroll', function(event) {
         if ($(this).scrollTop() > 600) {
             $('.back-to-top').fadeIn(200)
         } else {
@@ -265,7 +318,7 @@ function generateBlogItem(title, link, image, datePost) {
 
 
     //Animate the scroll to yop
-    $('.back-to-top').on('click', function (event) {
+    $('.back-to-top').on('click', function(event) {
         event.preventDefault();
 
         $('html, body').animate({
@@ -276,7 +329,39 @@ function generateBlogItem(title, link, image, datePost) {
 
 }(jQuery));
 
-(function ($) {
-    "use strict"; $(window).on('load', function (event) { $('.preloader').delay(500).fadeOut(500); }); $(".navbar-toggler").on('click', function () { $(this).toggleClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-toggler").removeClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-collapse").removeClass("show"); }); $(window).on('scroll', function (event) { var scroll = $(window).scrollTop(); if (scroll < 10) { $(".navigation").removeClass("sticky"); } else { $(".navigation").addClass("sticky"); } }); var scrollLink = $('.page-scroll'); $(window).scroll(function () { var scrollbarLocation = $(this).scrollTop(); scrollLink.each(function () { var sectionOffset = $(this.hash).offset().top - 73; if (sectionOffset <= scrollbarLocation) { $(this).parent().addClass('active'); $(this).parent().siblings().removeClass('active'); } }); }); function parallaxMouse() { if ($('#parallax').length) { var scene = document.getElementById('parallax'); var parallax = new Parallax(scene); }; }; parallaxMouse(); if ($('.progress-line').length) { $('.progress-line').appear(function () { var el = $(this); var percent = el.data('width'); $(el).css('width', percent + '%'); }, { accY: 0 }); }
-    $('.counter').counterUp({ delay: 10, time: 1600, }); $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } }); $(window).on('scroll', function (event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } }); $('.back-to-top').on('click', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: 0, }, 1500); });
+(function($) {
+    "use strict";
+    $(window).on('load', function(event) { $('.preloader').delay(500).fadeOut(500); });
+    $(".navbar-toggler").on('click', function() { $(this).toggleClass('active'); });
+    $(".navbar-nav a").on('click', function() { $(".navbar-toggler").removeClass('active'); });
+    $(".navbar-nav a").on('click', function() { $(".navbar-collapse").removeClass("show"); });
+    $(window).on('scroll', function(event) { var scroll = $(window).scrollTop(); if (scroll < 10) { $(".navigation").removeClass("sticky"); } else { $(".navigation").addClass("sticky"); } });
+    var scrollLink = $('.page-scroll');
+    $(window).scroll(function() {
+        var scrollbarLocation = $(this).scrollTop();
+        scrollLink.each(function() {
+            var sectionOffset = $(this.hash).offset().top - 73;
+            if (sectionOffset <= scrollbarLocation) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            }
+        });
+    });
+
+    function parallaxMouse() { if ($('#parallax').length) { var scene = document.getElementById('parallax'); var parallax = new Parallax(scene); }; };
+    parallaxMouse();
+    if ($('.progress-line').length) {
+        $('.progress-line').appear(function() {
+            var el = $(this);
+            var percent = el.data('width');
+            $(el).css('width', percent + '%');
+        }, { accY: 0 });
+    }
+    $('.counter').counterUp({ delay: 10, time: 1600, });
+    $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } });
+    $(window).on('scroll', function(event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } });
+    $('.back-to-top').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({ scrollTop: 0, }, 1500);
+    });
 }(jQuery));

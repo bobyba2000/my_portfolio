@@ -6,9 +6,14 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MN58XGR7E"></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-6MN58XGR7E');
@@ -32,9 +37,12 @@
     <link rel="stylesheet" href="./assets/css/default.css">
     <!--====== Style css ======-->
     <link rel="stylesheet" href="./assets/css/style.css">
+
+
     <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
     <script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script>
+
 </head>
 
 <body style="background-color: black;">
@@ -69,7 +77,8 @@
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
                                 <img height="60" src="assets/images/logo.png" alt="Logo">
-                            </a> <!-- Logo -->
+                            </a>
+                            <!-- Logo -->
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
@@ -79,36 +88,45 @@
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active"><a class="page-scroll" href="#home">Trang chủ</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#timeline">Công việc</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#service">Cộng tác</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#learning">Học hỏi</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#feedback">Phản hồi</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="#tiktok">Tiktok</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="#blog">Blog</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#event">Sự kiện</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#work">Thành tựu</a></li>
+
                                     <!-- <li class="nav-item"><a class="page-scroll" href="#blog">Bài viết</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="#contact">Liên hệ</a></li>
                                 </ul>
-                            </div> <!-- navbar collapse -->
-                        </nav> <!-- navbar -->
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- navigation -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navigation -->
         <div id="parallax" class="header-content d-flex align-items-center">
             <div class="header-shape shape-one layer" data-depth="0.10">
                 <img src="assets/images/banner/shape/shape-1.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-tow layer" data-depth="0.30">
                 <img src="assets/images/banner/shape/shape-2.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-three layer" data-depth="0.40">
                 <img src="assets/images/banner/shape/shape-3.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-fore layer" data-depth="0.60">
                 <img src="assets/images/banner/shape/shape-2.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-five layer" data-depth="0.20">
                 <img src="assets/images/banner/shape/shape-1.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <!-- <div class="header-shape shape-six layer" data-depth="0.15">
                 <img src="assets/images/banner/shape/shape-4.png" alt="Shape">
             </div> header shape -->
@@ -117,13 +135,16 @@
             </div> header shape -->
             <div class="header-shape shape-eight layer" data-depth="0.40">
                 <img src="assets/images/banner/shape/shape-3.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-nine layer" data-depth="0.20">
                 <img src="assets/images/banner/shape/shape-6.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="header-shape shape-ten layer" data-depth="0.30">
                 <img src="assets/images/banner/shape/shape-3.png" alt="Shape">
-            </div> <!-- header shape -->
+            </div>
+            <!-- header shape -->
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-6">
@@ -132,15 +153,19 @@
                             <h1 class="title user-name"></h1>
                             <p class="user-about-detail" style="color: white; font-size: 18px;"></p>
                             <a class="main-btn page-scroll" href="#event">SỰ KIỆN SẮP TỚI</a>
-                        </div> <!-- header content right -->
+                        </div>
+                        <!-- header content right -->
                     </div>
                     <div class="col-lg-6 offset-xl-1">
-                        <div class="header-image d-none d-lg-block">
+                        <div class="header-image d-lg-block">
                             <img id="user-avatar" alt="hero">
-                        </div> <!-- header image -->
+                        </div>
+                        <!-- header image -->
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
             <div class="header-social">
                 <div class="container">
                     <div class="row">
@@ -155,12 +180,17 @@
                                     <li><a href="https://www.facebook.com/Hoangtridung.HTD" class="fanpage-link" target="_blank"><i class="fa-solid fa-flag"></i></a></li>
                                     <li><a href="https://www.linkedin.com/in/hoangtridunghtd3101/" class="linkedin-link" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
-                            </div> <!-- header social -->
+                            </div>
+                            <!-- header social -->
                         </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
-            </div> <!-- header social -->
-        </div> <!-- header content -->
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- header social -->
+        </div>
+        <!-- header content -->
     </header>
     <!--====== HEADER PART ENDS ======-->
     <!--====== ABOUT PART START ======-->
@@ -189,71 +219,87 @@
     <section id="timeline">
     </section>
     <!--====== TIMELINE PART END ======-->
-    <!--====== SERVICES PART START ======-->
-    <section id="service" class="services-area gray-bg pt-50 pb-50" style="background-color: black;">
+
+    <section class="tiktok" id="tiktok">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2 class="title">CỘNG TÁC CÙNG HTD?</h2>
-                        <p id="service-info"></p>
-                    </div> <!-- section title -->
+            <h5 class="title"> TIKTOK</h5>
+            <div class="layout">
+                <div class="list" id="list">
+                    <div class="clip1">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7235978158455917826" height="777" width="380"></iframe>
+
+                    </div>
+                    <div class="clip2">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7165851556435217690" height="777" width="380"></iframe>
+
+                    </div>
+                    <div class="clip3">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7233781005591514369" height="777" width="380"></iframe>
+
+                    </div>
+
+                    <div class="clip4">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7148115545756421402" height="777" width="380"></iframe>
+
+                    </div>
+
+                    <div class="clip5">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7141774691210956059" height="777" width="380"></iframe>
+
+                    </div>
+                    <div class="clip6">
+                        <iframe class="tiktokfeedback" src="https://www.tiktok.com/embed/v2/7190677416082263323" height="777" width="380"></iframe>
+
+                    </div>
                 </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center" id="user-services">
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    <!--====== SERVICES PART ENDS ======-->
-    <!--====== CALL TO ACTION PART START ======-->
-    <section id="call-to-action" class="call-to-action pt-50 pb-50 bg_cover" style="background-image: url(assets/images/call-to-action.jpg)">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-9">
-                    <div class="call-action-content text-center">
-                        <h2 class="action-title">YOU DIDN'T COME THIS FAR, ONLY TO COME THIS FAR</h2>
-                    </div> <!-- call action content -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    <!--====== CALL TO ACTION PART ENDS ======-->
-    <!--====== LEARNING PART START ======-->
-    <section id="learning" class="learing-area pt-50 pb-50" style="background-image: url(assets/images/call-to-action.jpg)">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-25">
-                        <h2 class="title" style="color: black;">HỌC HỎI CÙNG HTD</h2>
-                        <p id="learning-info"></p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center" id="user-learning">
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    <!--====== LEARNING PART ENDS ======-->
-    <section id="feedback" class="pt-50 pb-50" style="background-color: black">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pb-25">
-                        <h2 class="title">PHẢN HỒI VỀ DŨNG</h2>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-        <div class="feedback-slider" style="overflow: hidden; height: fit-content">
-            <div class="feedback-slider-wrapper flex" id="user-feedback">
-                
-            </div>
-            <div class="arrows">
-                <a href="#" title="Previous" class="arrow feedback-slider-link prev"></a>
-                <a href="#" title="Next" class="arrow feedback-slider-link next"></a>
+                <span class="previous" id="previous"><i class="fa-solid fa-circle-left"></i>
+                    
+                </span>
+                <span class="next" id="next"><i class="fa-solid fa-circle-right"></i>
+                    
+                </span>
+
             </div>
         </div>
     </section>
+    <script>
+        const scrollList = document.getElementById('list');
+        const scrollLeftButton = document.getElementById('previous');
+        const scrollRightButton = document.getElementById('next');
+        let scrollPosition = 0;
+        scrollLeftButton.addEventListener('click', () => {
+            scrollPosition -= 341; // Adjust the scroll amount as needed
+            if (scrollPosition < 0) {
+                scrollPosition = 0;
+            }
+            scrollList.style.transform = `translateX(-${scrollPosition}px)`;
+        });
+
+        scrollRightButton.addEventListener('click', () => {
+            const listWidth = scrollList.scrollWidth - scrollList.clientWidth;
+            scrollPosition += 341; // Adjust the scroll amount as needed
+            if (scrollPosition > listWidth) {
+                scrollPosition = listWidth;
+            }
+            scrollList.style.transform = `translateX(-${scrollPosition}px)`;
+        });
+    </script>
+    <!--====== BLOG PART START ======-->
+    <section id="blog" class="blog-area pt-50 pb-50" style="background-color: black;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center pb-25">
+                        <h2 class="title">BLOG</h2>
+                        <p id="blog-info"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" id="user-blog">
+            </div>
+        </div>
+    </section>
+    <!--====== BLOG PART ENDS ======-->
     <section id="event">
         <div id="app" class="wrapper" v-cloak v-bind:class="{'is-previous': isPreviousSlide, 'first-load': isFirstLoad}">
             <div class="slide-wrapper" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }" v-bind:style="{ 'z-index': (slides.length - index), 'background-image': 'url(' + slide.bgImg + ')' }">
@@ -267,11 +313,11 @@
                     </div> -->
                     <div class="slide-content">
                         <h1 class="slide-content-text">
-                            <p>{{ slide.headlineFirstLine }}</p>
+                            <p class="pt-60" style="font-weight: 800;">{{ slide.headlineFirstLine }}</p>
                             <p class="pt-10" style="font-size: 24px; font-style: italic;">{{ slide.headlineSecondLine }}</p>
                             <p class="pt-30 event-content" style="font-size: 28px;">{{slide.content}}</p>
                         </h1>
-                        <a class="main-btn" style="color: black; margin-top: 20px; cursor: pointer; max-width: 200px;" v-bind:href="slide.link" target="_blank">Đặt chỗ ngay</a>
+
                     </div>
                     <h2 class="slide-side-text"><span>{{ slide.sublineFirstLine }}</span></h2>
                 </div>
@@ -284,22 +330,8 @@
             </div>
         </div>
     </section>
-    <!--====== WORK PART START ======-->
-    <section id="work" class="work-area pt-50 pb-50" style="background-color: #333333;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center  pb-25">
-                        <h2 class="title">THÀNH TỰU</h2>
-                        <p id="recent-work-info"></p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row" id="user-works">
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    <!--====== WORK PART ENDS ======-->
+
+
     <!--====== BLOG PART START ======-->
     <!-- <section id="blog" class="blog-area pt-50 pb-50" style="background-color: black;">
         <div class="container">
@@ -323,9 +355,11 @@
                 <div class="col-lg-8">
                     <div class="section-title text-center pb-25">
                         <h2 class="title">LIÊN HỆ</h2>
-                    </div> <!-- section title -->
+                    </div>
+                    <!-- section title -->
                 </div>
-            </div> <!-- row -->
+            </div>
+            <!-- row -->
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="contact-box text-center mt-30">
@@ -336,7 +370,8 @@
                             <h6 class="contact-title">Địa chỉ</h6>
                             <p class="user-location"></p>
                         </div>
-                    </div> <!-- contact box -->
+                    </div>
+                    <!-- contact box -->
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="contact-box text-center mt-30">
@@ -347,7 +382,8 @@
                             <h6 class="contact-title">Số điện thoại</h6>
                             <p class="user-phone"></p>
                         </div>
-                    </div> <!-- contact box -->
+                    </div>
+                    <!-- contact box -->
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="contact-box text-center mt-30">
@@ -358,9 +394,11 @@
                             <h6 class="contact-title">Email</h6>
                             <p class="user-email"></p>
                         </div>
-                    </div> <!-- contact box -->
+                    </div>
+                    <!-- contact box -->
                 </div>
-            </div> <!-- row -->
+            </div>
+            <!-- row -->
             <div class="row">
                 <div class="col-lg-6">
                     <div class="contact-form pt-30">
@@ -384,20 +422,22 @@
                 <div class="col-lg-6">
                     <div class="contact-map mt-60">
                         <div class="gmap_canvas">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125419.42263179395!2d106.6467328!3d10.7839488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f288ff20e59%3A0xc02687a6a500d066!2zR2EgU8OgaSBHw7JuLCBIbyBDaGkgTWluaCBDaXR5LCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1666823850051!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125419.42263179395!2d106.6467328!3d10.7839488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f288ff20e59%3A0xc02687a6a500d066!2zR2EgU8OgaSBHw7JuLCBIbyBDaGkgTWluaCBDaXR5LCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1666823850051!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> <!-- container -->
+        </div>
+        <!-- container -->
     </section>
     <!--====== CONTACT PART ENDS ======-->
     <!--====== FOOTER PART START ======-->
     <footer id="footer" class="footer-area">
         <div class="footer-widget pt-50 pb-50" style="background-color: white !important;">
             <div class="container">
-                <div class="row" style="display: flex; align-items:flex-start; justify-content: center;" id="user-skills">
-                </div>
+
+
                 <div class="footer-content text-center">
                     <ul>
                         <li style="margin-left: 0;"><a href="#" target="_blank" class="facebook-link media-icon"><i class="lni-facebook-filled"></i></a></li>
@@ -408,19 +448,10 @@
                         <li><a href="https://www.linkedin.com/in/hoangtridunghtd3101/" target="_blank" class="linkedin-link media-icon"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
-            </div> <!-- container -->
-        </div> <!-- footer widget -->
-        <div class="footer-copyright home pb-20">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright-text text-center pt-20">
-                            <p>Copyright © 2022. Template Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
-                        </div> <!-- copyright text -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer widget -->
+            </div>
+            <!-- container -->
+        </div>
+
     </footer>
     <!--====== FOOTER PART ENDS ======-->
     <!--====== BACK TOP TOP PART START ======-->
@@ -463,38 +494,39 @@
 
 
 
-        $(window).scroll(function () {
+        /* $(window).scroll(function() {
             //   if (document.body.scrollTop === 0) $('#video').play();
             //   if(document.body.scrollTop > $('#parallax').offset().top) $('.video').stop();
             var oTop = $('#counter-number').offset().top - window.innerHeight;
             if (a == 0 && $(window).scrollTop() > oTop) {
-                $('.counter-value').each(function () {
+                $('.counter-value').each(function() {
                     var $this = $(this),
                         countTo = $this.attr('data-count');
                     $({
                         countNum: 0
                     }).animate({
                         countNum: countTo
-                    },
-                        {
-                            duration: 2000,
-                            easing: 'swing',
-                            step: function () {
-                                $this.text(addCommas(`${Math.floor(this.countNum)}`));
-                            },
-                            complete: function () {
-                                $this.text(addCommas(`${this.countNum}`));
-                                //alert('finished');
-                            }
-                        });
+                    }, {
+                        duration: 2000,
+                        easing: 'swing',
+                        step: function() {
+                            $this.text(addCommas(`${Math.floor(this.countNum)}`));
+                        },
+                        complete: function() {
+                            $this.text(addCommas(`${this.countNum}`));
+                            //alert('finished');
+                        }
+                    });
                 });
                 a = 1
             }
 
-        });
+        });*/
     </script>
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+
+    <!-- <script src="assets/js/jquery.js"></script> -->
     <!-- <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js"></script> -->
 </body>

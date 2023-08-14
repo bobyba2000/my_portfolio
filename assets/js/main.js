@@ -1,34 +1,34 @@
-(function ($) {
+(function($) {
 
     "use strict";
 
     //===== Prealoder
 
-    $(window).on('load', function (event) {
+    $(window).on('load', function(event) {
         $('.preloader').delay(400).fadeOut(400);
     });
 
     //===== Mobile Menu 
 
-    $(".navbar-toggler").on('click', function () {
+    $(".navbar-toggler").on('click', function() {
         $(this).toggleClass('active');
     });
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-toggler").removeClass('active');
     });
 
 
     //===== close navbar-collapse when a  clicked
 
-    $(".navbar-nav a").on('click', function () {
+    $(".navbar-nav a").on('click', function() {
         $(".navbar-collapse").removeClass("show");
     });
 
 
     //===== Sticky
 
-    $(window).on('scroll', function (event) {
+    $(window).on('scroll', function(event) {
         var scroll = $(window).scrollTop();
         if (scroll < 10) {
             $(".navigation").removeClass("sticky");
@@ -42,10 +42,10 @@
 
     var scrollLink = $('.page-scroll');
     // Active link switching
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         var scrollbarLocation = $(this).scrollTop();
 
-        scrollLink.each(function () {
+        scrollLink.each(function() {
 
             var sectionOffset = $(this.hash).offset().top - 73;
 
@@ -72,7 +72,7 @@
     //===== Progress Bar
 
     if ($('.progress-line').length) {
-        $('.progress-line').appear(function () {
+        $('.progress-line').appear(function() {
             var el = $(this);
             var percent = el.data('width');
             $(el).css('width', percent + '%');
@@ -101,7 +101,7 @@
     //===== Back to top
 
     // Show or hide the sticky footer button
-    $(window).on('scroll', function (event) {
+    $(window).on('scroll', function(event) {
         if ($(this).scrollTop() > 600) {
             $('.back-to-top').fadeIn(200)
         } else {
@@ -111,7 +111,7 @@
 
 
     //Animate the scroll to yop
-    $('.back-to-top').on('click', function (event) {
+    $('.back-to-top').on('click', function(event) {
         event.preventDefault();
 
         $('html, body').animate({
@@ -122,14 +122,46 @@
 
 }(jQuery));
 
-(function ($) {
-    "use strict"; $(window).on('load', function (event) { $('.preloader').delay(500).fadeOut(500); }); $(".navbar-toggler").on('click', function () { $(this).toggleClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-toggler").removeClass('active'); }); $(".navbar-nav a").on('click', function () { $(".navbar-collapse").removeClass("show"); }); $(window).on('scroll', function (event) { var scroll = $(window).scrollTop(); if (scroll < 10) { $(".navigation").removeClass("sticky"); } else { $(".navigation").addClass("sticky"); } }); var scrollLink = $('.page-scroll'); $(window).scroll(function () { var scrollbarLocation = $(this).scrollTop(); scrollLink.each(function () { var sectionOffset = $(this.hash).offset().top - 73; if (sectionOffset <= scrollbarLocation) { $(this).parent().addClass('active'); $(this).parent().siblings().removeClass('active'); } }); }); function parallaxMouse() { if ($('#parallax').length) { var scene = document.getElementById('parallax'); var parallax = new Parallax(scene); }; }; parallaxMouse(); if ($('.progress-line').length) { $('.progress-line').appear(function () { var el = $(this); var percent = el.data('width'); $(el).css('width', percent + '%'); }, { accY: 0 }); }
-    $('.counter').counterUp({ delay: 10, time: 1600, }); $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } }); $(window).on('scroll', function (event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } }); $('.back-to-top').on('click', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: 0, }, 1500); });
+(function($) {
+    "use strict";
+    $(window).on('load', function(event) { $('.preloader').delay(500).fadeOut(500); });
+    $(".navbar-toggler").on('click', function() { $(this).toggleClass('active'); });
+    $(".navbar-nav a").on('click', function() { $(".navbar-toggler").removeClass('active'); });
+    $(".navbar-nav a").on('click', function() { $(".navbar-collapse").removeClass("show"); });
+    $(window).on('scroll', function(event) { var scroll = $(window).scrollTop(); if (scroll < 10) { $(".navigation").removeClass("sticky"); } else { $(".navigation").addClass("sticky"); } });
+    // var scrollLink = $('.page-scroll');
+    // $(window).scroll(function() {
+    //     var scrollbarLocation = $(this).scrollTop();
+    //     scrollLink.each(function() {
+    //         var sectionOffset = $(this.hash).offset().top - 73;
+    //         if (sectionOffset <= scrollbarLocation) {
+    //             $(this).parent().addClass('active');
+    //             $(this).parent().siblings().removeClass('active');
+    //         }
+    //     });
+    // });
+
+    function parallaxMouse() { if ($('#parallax').length) { var scene = document.getElementById('parallax'); var parallax = new Parallax(scene); }; };
+    parallaxMouse();
+    if ($('.progress-line').length) {
+        $('.progress-line').appear(function() {
+            var el = $(this);
+            var percent = el.data('width');
+            $(el).css('width', percent + '%');
+        }, { accY: 0 });
+    }
+    $('.counter').counterUp({ delay: 10, time: 1600, });
+    $('.image-popup').magnificPopup({ type: 'image', gallery: { enabled: true } });
+    $(window).on('scroll', function(event) { if ($(this).scrollTop() > 600) { $('.back-to-top').fadeIn(200) } else { $('.back-to-top').fadeOut(200) } });
+    $('.back-to-top').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({ scrollTop: 0, }, 1500);
+    });
 }(jQuery));
 
 
-  
-  $('.overlay').addClass('overlay-blue');
+
+$('.overlay').addClass('overlay-blue');
 
 
 
@@ -154,26 +186,26 @@ async function changeInfo() {
 
     changeAbout(userDB['about']);
 
-    changeService(userDB['service']);
+    // changeService(userDB['service']);
 
-    changeRecentWork(userDB['recent_work']);
+    // changeRecentWork(userDB['recent_work']);
 
-    // changeBlog(userDB['content']);
+    changeBlog(userDB['content']);
 
-    changeLearing(userDB['learning']);
+    // changeLearing(userDB['learning']);
 
-    changeSkill(userDB);
+    // changeSkill(userDB);
 
     changeTimeline(userDB['timeline']);
 
     changeEvent(userDB['event']);
 
-    changeFeedback(userDB['feedback']);
+    // changeFeedback(userDB['feedback']);
 }
 
 function changeTimeline(userTimelineDB) {
     userTimeline = document.getElementById("timeline");
-    var listTimelineDB = userTimelineDB['items'].filter(function (timeline) { return timeline['isActive'] == true });
+    var listTimelineDB = userTimelineDB['items'].filter(function(timeline) { return timeline['isActive'] == true });
     var listTimeline = listTimelineDB.map(e => generateTimelineItem(e['title'], e['year'], e['image'], e['content']));
     userTimeline.innerHTML = '';
     userTimeline.replaceChildren(...listTimeline);
@@ -192,8 +224,8 @@ function calcDateDiff(event) {
 
 function changeEvent(userEventDB) {
     userEvent = document.getElementById("user_event");
-    var listEventDB = userEventDB['items'].filter(function (event) { return event['isActive'] == true });
-    
+    var listEventDB = userEventDB['items'].filter(function(event) { return event['isActive'] == true });
+
     var app = new Vue({
         el: '#app',
         data: {
@@ -214,7 +246,7 @@ function changeEvent(userEventDB) {
                 }
             })
         },
-        mounted: function () {
+        mounted: function() {
             var productRotatorSlide = document.getElementById("app");
             var startX = 0;
             var endX = 0;
@@ -223,7 +255,7 @@ function changeEvent(userEventDB) {
 
             productRotatorSlide.addEventListener("touchmove", (event) => endX = event.touches[0].pageX);
 
-            productRotatorSlide.addEventListener("touchend", function (event) {
+            productRotatorSlide.addEventListener("touchend", function(event) {
                 var threshold = startX - endX;
 
                 if (threshold < 150 && 0 < this.currentSlide) {
@@ -244,50 +276,50 @@ function changeEvent(userEventDB) {
     })
 }
 
-function changeFeedback(userFeedbackDB){
+function changeFeedback(userFeedbackDB) {
     userFeedback = document.getElementById("user-feedback");
-    var listFeedbackDB = userFeedbackDB['items'].filter(function (feedback) { return feedback['isActive'] == true });
+    var listFeedbackDB = userFeedbackDB['items'].filter(function(feedback) { return feedback['isActive'] == true });
     var listFeedback = listFeedbackDB.map(e => generateFeedbackItem(e['title'], e['subTitle'], e['content'], e['video']))
     userFeedback.innerHTML = '';
     userFeedback.replaceChildren(...listFeedback)
 
-    var s           = $('.feedback-slider'),
-          sWrapper    = s.find('.feedback-slider-wrapper'),
-          sItem       = s.find('.feedback-slide'),
-          btn         = s.find('.feedback-slider-link'),
-          sWidth      = sItem.width(),
-          sCount      = sItem.length,
-          slide_date  = s.find('.feedback-slide-date'),
-          slide_title = s.find('.feedback-slide-title'),
-          slide_text  = s.find('.feedback-slide-text'),
-          slide_more  = s.find('.feedback-slide-more'),
-          slide_image = s.find('.feedback-slide-image img'),
-          sTotalWidth = sCount * sWidth;
-      
-      sWrapper.css('width', sTotalWidth);
-      sWrapper.css('width', sTotalWidth);
-      
-      var clickCount  = 0;
-      
-      btn.on('click', function(e) {
+    var s = $('.feedback-slider'),
+        sWrapper = s.find('.feedback-slider-wrapper'),
+        sItem = s.find('.feedback-slide'),
+        btn = s.find('.feedback-slider-link'),
+        sWidth = sItem.width(),
+        sCount = sItem.length,
+        slide_date = s.find('.feedback-slide-date'),
+        slide_title = s.find('.feedback-slide-title'),
+        slide_text = s.find('.feedback-slide-text'),
+        slide_more = s.find('.feedback-slide-more'),
+        slide_image = s.find('.feedback-slide-image img'),
+        sTotalWidth = sCount * sWidth;
+
+    sWrapper.css('width', sTotalWidth);
+    sWrapper.css('width', sTotalWidth);
+
+    var clickCount = 0;
+
+    btn.on('click', function(e) {
         e.preventDefault();
-  
-        if( $(this).hasClass('next') ) {
-          
-          ( clickCount < ( sCount ) ) ? clickCount++ : clickCount = 0;
-        } else if ( $(this).hasClass('prev') ) {
-          
-          ( clickCount > 0 ) ? clickCount-- : ( clickCount = sCount );
+
+        if ($(this).hasClass('next')) {
+
+            (clickCount < (sCount)) ? clickCount++ : clickCount = 0;
+        } else if ($(this).hasClass('prev')) {
+
+            (clickCount > 0) ? clickCount-- : (clickCount = sCount);
         }
-        TweenMax.to(sWrapper, 0.4, {x: '-' + ( sWidth * clickCount ) })
-  
-  
+        TweenMax.to(sWrapper, 0.4, { x: '-' + (sWidth * clickCount) })
+
+
         //CONTENT ANIMATIONS
-  
-        var fromProperties = {autoAlpha:0, x:'-50', y:'-10'};
-        var toProperties = {autoAlpha:0.8, x:'0', y:'0'};
-  
-        TweenLite.fromTo(slide_image, 1, {autoAlpha:0, y:'40'}, {autoAlpha:1, y:'0'});
+
+        var fromProperties = { autoAlpha: 0, x: '-50', y: '-10' };
+        var toProperties = { autoAlpha: 0.8, x: '0', y: '0' };
+
+        TweenLite.fromTo(slide_image, 1, { autoAlpha: 0, y: '40' }, { autoAlpha: 1, y: '0' });
         TweenLite.fromTo(slide_date, 0.4, fromProperties, toProperties);
         TweenLite.fromTo(slide_title, 0.6, fromProperties, toProperties);
         TweenLite.fromTo(slide_text, 0.8, fromProperties, toProperties);
@@ -309,8 +341,8 @@ function changeAbout(userAboutDB) {
 
     userYoutube = document.getElementById('youtube-video');
     listArray = userAboutDB['youtube_video'].split('/')
-    // youtubeId = listArray[listArray.length - 1];
-    // userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
+        // youtubeId = listArray[listArray.length - 1];
+        // userYoutube.innerHTML = `<iframe src="${userAboutDB['youtube_video']}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0"></iframe>`
 
     userAboutDetail = document.getElementsByClassName("user-about-detail");
     for (var i = 0; i < userAboutDetail.length; i++) {
@@ -386,7 +418,7 @@ function changeRecentWork(userRecentWorkDB) {
 
 
     userWork = document.getElementById("user-works");
-    var listWorkDB = userRecentWorkDB['posts'].filter(function (work) { return work['isActive'] == true });
+    var listWorkDB = userRecentWorkDB['posts'].filter(function(work) { return work['isActive'] == true });
     var listWork = listWorkDB.map((e, id) => generateWorkItem2(e['title'], e['link'], e['image'], id));
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
@@ -396,7 +428,7 @@ function changeBlog(userBlogDB) {
     document.getElementById('blog-info').innerHTML = userBlogDB['introduce'];
 
     userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function (blog) { return blog['isActive'] == true });
+    var listBlogDB = userBlogDB['posts'].filter(function(blog) { return blog['isActive'] == true });
     var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
@@ -406,7 +438,7 @@ function changeLearing(userLearningDB) {
     document.getElementById('learning-info').innerHTML = userLearningDB['introduce'];
     document.getElementById('learning').style.background = `rgba(255, 255, 255, 0.8) url('${userLearningDB['image_background']}')`
     userLearning = document.getElementById("user-learning");
-    var listLearningDB = userLearningDB['posts'].filter(function (learning) { return learning['isActive'] == true });
+    var listLearningDB = userLearningDB['posts'].filter(function(learning) { return learning['isActive'] == true });
     var listLearning = listLearningDB.map(e => generateLearningItem(e['title'], e['link'], e['image']));
     userLearning.innerHTML = '';
     userLearning.replaceChildren(...listLearning);
@@ -417,15 +449,15 @@ function generateSkillItem(skill, value, icon) {
     div.classList.add(...['column']);
     let skillHtml = `
     <div class="card" id="counter-number">
-      <p><i class="fa-solid fa-`+ icon + ` fa-2xl" style="color: black"></i></p>
-      <h3 style="color:black"><span class="counter-value" data-count="`+ value + `" style="color: black">0</span>+</h3>
-      <p style="color: black;">`+ skill + `</p>
+      <p><i class="fa-solid fa-` + icon + ` fa-2xl" style="color: black"></i></p>
+      <h3 style="color:black"><span class="counter-value" data-count="` + value + `" style="color: black">0</span>+</h3>
+      <p style="color: black;">` + skill + `</p>
     </div>`;
     div.innerHTML = skillHtml.trim();
     return div;
 }
 
-function generateFeedbackItem(title, subTitle, content, video){
+function generateFeedbackItem(title, subTitle, content, video) {
     var div = document.createElement('div')
     div.classList.add(...['feedback-slide', 'flex'])
     let feedbackHtml = `
@@ -503,9 +535,9 @@ function generateServiceItem(title, info, icon, image, id) {
                 <a class="main-btn" href="work-details.html?id=${id}" target="_blank"><span>Tìm hiểu ngay</span></a>
             </div>
         </div> <!-- single service -->`
-    if(id == 2){
+    if (id == 2) {
         serviceHtml =
-        `<div class="service-background  mt-30" style="background-image: url('${image}')">
+            `<div class="service-background  mt-30" style="background-image: url('${image}')">
             <div class="single-service no-pointer text-center">
                 <div>
                     <div class="service-icon">
@@ -550,18 +582,21 @@ function generateWorkItem(title, link, image) {
 function generateWorkItem2(title, link, image, id) {
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    var workHtml = `<div class="single-work mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
+    var workHtml = `<div class="single-work mt-30" onclick="window.open('${link}', '_self');" style="cursor: pointer;">
     <div class="work-image">
         <img src="${image}" alt="Blog">
     </div>
     
     </div>`;
-    if(id == 4 || id == 7){
+    if (id == 4 || id == 7) {
         workHtml = `<div class="single-work mt-30">
     <div class="work-image">
         <img src="${image}" alt="Blog">
     </div>
-    
+    <div class="blog-content">
+        <h4 class="blog-title"><a href="${link}" target="_self">${title}</a></h4>
+        <span>${datePost}</span>
+    </div>
     </div>`;
     }
     div.innerHTML = workHtml.trim();
@@ -569,14 +604,15 @@ function generateWorkItem2(title, link, image, id) {
 }
 
 function generateBlogItem(title, link, image, datePost) {
+
     var div = document.createElement('div');
     div.classList.add(...['col-lg-4', 'col-md-8', 'col-sm-9']);
-    let blogHtml = `<div class="single-blog mt-30" onclick="window.open('${link}', '_blank');" style="cursor: pointer;">
+    let blogHtml = `<div class="single-blog mt-30" onclick="window.open('${link}', '_self');" >
     <div class="blog-image">
         <img src="${image}" alt="Blog">
     </div>
     <div class="blog-content">
-        <h4 class="blog-title"><a href="${link}" target="_blank">${title}</a></h4>
+        <h4 class="blog-title"><a href="${link}" target='_self'>${title}</a></h4>
         <span>${datePost}</span>
     </div>
     </div>`;
@@ -621,5 +657,3 @@ function sendEmail() {
         message => alert(message)
     );
 }
-
-

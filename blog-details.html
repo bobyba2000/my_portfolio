@@ -10,7 +10,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MN58XGR7E"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-6MN58XGR7E');
@@ -24,7 +27,9 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -51,7 +56,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
-                                <img height="60"  src="assets/images/logo.png" alt="Logo">
+                                <img height="60" src="assets/images/logo.png" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
@@ -86,13 +91,14 @@
             </div>
         </div>
     </header>
+
     <section id="blog" class="single-blog-page pt-80 pb-130">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-blog-post mt-50">
                         <div class="blog-thumb">
-                            <img id="blog-image"  alt="Blog Details">
+                            <img id="blog-image" alt="Blog Details">
                         </div>
                         <div class="blog-content">
                             <h3 class="blog-title" id="blog-title"></h3>
@@ -101,7 +107,7 @@
                             </ul>
                             <div id="includedContent"></div>
 
-                            <iframe id="blog-link" style="border: none; height: 100vh !important;" ></iframe>
+                            <iframe id="blog-link" scrolling="no" frameborder="0" marginwidth="0" width="100%" style="height: 1000px; overflow: hidden"></iframe>
                         </div>
                     </div>
                 </div>
@@ -110,44 +116,122 @@
                         <div class="sidebar-post mt-50">
                             <h4 class="sidebar-title" style="color: black;">Những bài blog gần đây</h4>
                             <ul id="user-blog">
-                                
+
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <footer id="footer" class="footer-area">
-        <div class="footer-widget pt-50 pb-50">
-            <div class="container">
-                <div class="row" style="display: flex; align-items:flex-start; justify-content: center;" id="user-skills">
+
+    <!--====== CONTACT PART START ======-->
+    <section id="contact" class="contact-area pt-50 pb-50 gray-bg" style="background-color: black;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center pb-25">
+                        <h2 class="title">LIÊN HỆ</h2>
+                    </div>
+                    <!-- section title -->
                 </div>
+            </div>
+            <!-- row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="contact-box text-center mt-30">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h6 class="contact-title">Địa chỉ</h6>
+                            <p class="user-location"></p>
+                        </div>
+                    </div>
+                    <!-- contact box -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="contact-box text-center mt-30">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h6 class="contact-title">Số điện thoại</h6>
+                            <p class="user-phone"></p>
+                        </div>
+                    </div>
+                    <!-- contact box -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="contact-box text-center mt-30">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h6 class="contact-title">Email</h6>
+                            <p class="user-email"></p>
+                        </div>
+                    </div>
+                    <!-- contact box -->
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-form pt-30">
+                        <form id="contact-form" onsubmit="return false">
+                            <div class="single-form">
+                                <input type="text" name="name" id="send-name" placeholder="Tên">
+                            </div>
+                            <div class="single-form">
+                                <input type="email" name="email" id="send-email" placeholder="Email">
+                            </div>
+                            <div class="single-form">
+                                <textarea name="message" id="send-message" placeholder="Tin nhắn"></textarea>
+                            </div>
+                            <p class="form-message"></p>
+                            <div class="single-form">
+                                <button class="main-btn" type="submit" onclick="sendEmail()">Thủ thỉ cùng Dũng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-map mt-60">
+                        <div class="gmap_canvas">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125419.42263179395!2d106.6467328!3d10.7839488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f288ff20e59%3A0xc02687a6a500d066!2zR2EgU8OgaSBHw7JuLCBIbyBDaGkgTWluaCBDaXR5LCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1666823850051!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container -->
+    </section>
+    <!--====== CONTACT PART ENDS ======-->
+    <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-widget pb-50" style="background-color: white !important;">
+            <div class="container">
+
+
                 <div class="footer-content text-center">
                     <ul>
-                        <li style="margin-left: 0;"><a href="#" target="_blank" class="facebook-link"><i class="lni-facebook-filled"></i></a></li>
-                        <li><a href="#" target="_blank" class="instagram-link"><i class="lni-instagram-original"></i></a></li>
-                        <li><a href="#" target="_blank" class="tiktok-link"><i class="fab fa-tiktok"></i></a></li>
-                        <li><a href="#" target="_blank" class="youtube-link"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://www.facebook.com/Hoangtridung.HTD" target="_blank" class="fanpage-link"><i class="fa-solid fa-flag"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/hoangtridunghtd3101/" target="_blank" class="linkedin-link "><i class="fab fa-linkedin-in"></i></a></li>
+                        <li style="margin-left: 0;"><a href="#" target="_blank" class="facebook-link media-icon"><i class="lni-facebook-filled"></i></a></li>
+                        <li><a href="#" target="_blank" class="instagram-link media-icon"><i class="lni-instagram-original"></i></a></li>
+                        <li><a href="#" target="_blank" class="tiktok-link media-icon"><i class="fab fa-tiktok"></i></a></li>
+                        <li><a href="#" target="_blank" class="youtube-link media-icon"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.facebook.com/Hoangtridung.HTD" target="_blank" class="fanpage-link media-icon"><i class="fa-solid fa-flag"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/hoangtridunghtd3101/" target="_blank" class="linkedin-link media-icon"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
-            </div> <!-- container -->
-        </div> <!-- footer widget -->
-        <div class="footer-copyright pb-20">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright-text text-center pt-20">
-                            <p>Copyright © 2022. Template Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
-                        </div> <!-- copyright text -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer widget -->
+            </div>
+            <!-- container -->
+        </div>
+
     </footer>
+    <!--====== FOOTER PART ENDS ======-->
 
     <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
@@ -183,38 +267,38 @@
 
 
 
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             //   if (document.body.scrollTop === 0) $('#video').play();
             //   if(document.body.scrollTop > $('#parallax').offset().top) $('.video').stop();
             var oTop = $('#counter-number').offset().top - window.innerHeight;
             if (a == 0 && $(window).scrollTop() > oTop) {
-                $('.counter-value').each(function () {
+                $('.counter-value').each(function() {
                     var $this = $(this),
                         countTo = $this.attr('data-count');
                     $({
                         countNum: 0
                     }).animate({
                         countNum: countTo
-                    },
-                        {
-                            duration: 2000,
-                            easing: 'swing',
-                            step: function () {
-                                $this.text(addCommas(`${Math.floor(this.countNum)}`));
-                            },
-                            complete: function () {
-                                $this.text(addCommas(`${this.countNum}`));
-                                //alert('finished');
-                            }
-                        });
+                    }, {
+                        duration: 2000,
+                        easing: 'swing',
+                        step: function() {
+                            $this.text(addCommas(`${Math.floor(this.countNum)}`));
+                        },
+                        complete: function() {
+                            $this.text(addCommas(`${this.countNum}`));
+                            //alert('finished');
+                        }
+                    });
                 });
                 a = 1
             }
 
         });
     </script>
+
     <script src="assets/js/single_blog.js"></script>
-    
+
 </body>
 
 </html>
