@@ -178,19 +178,21 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 changeInfo();
+var listBlogDB;
+
 
 //Variable to access database collection
 
 async function changeInfo() {
     const userDB = (await firestore.collection("user_info").get()).docs[0].data();
-
+    listBlogDB = userDB['content']['posts'].filter(function(blog) { return blog['isActive'] == true });
     changeAbout(userDB['about']);
 
     // changeService(userDB['service']);
 
     // changeRecentWork(userDB['recent_work']);
 
-    changeBlog(userDB['content']);
+    changeBlog();
 
     // changeLearing(userDB['learning']);
 
@@ -423,15 +425,68 @@ function changeRecentWork(userRecentWorkDB) {
     userWork.innerHTML = '';
     userWork.replaceChildren(...listWork);
 }
+var currentPage = 1;
+var postsPerPage = 6;
 
-function changeBlog(userBlogDB) {
-    document.getElementById('blog-info').innerHTML = userBlogDB['introduce'];
+// function changeBlog(userBlogDB) {
+//     document.getElementById('blog-info').innerHTML = userBlogDB['introduce'];
+
+//     userBlog = document.getElementById("user-blog");
+//     var listBlogDB = userBlogDB['posts'].filter(function(blog) { return blog['isActive'] == true });
+//     var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
+//     userBlog.innerHTML = '';
+//     userBlog.replaceChildren(...listBlog);
+// }
+function changeBlog() {
+    // Tính toán chỉ số bài viết bắt đầu và kết thúc trên trang hiện tại
+    var startIndex = (currentPage - 1) * postsPerPage;
+    var endIndex = startIndex + postsPerPage;
+
+
 
     userBlog = document.getElementById("user-blog");
-    var listBlogDB = userBlogDB['posts'].filter(function(blog) { return blog['isActive'] == true });
-    var listBlog = listBlogDB.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
+    // var listBlogDB = userBlogDB['posts'].filter(function(blog) { return blog['isActive'] == true });
+    var paginatedList = listBlogDB.slice(startIndex, endIndex);
+
+    var listBlog = paginatedList.map(e => generateBlogItem(e['title'], e['link'], e['image'], e['datePost']));
     userBlog.innerHTML = '';
     userBlog.replaceChildren(...listBlog);
+
+    // Tạo thanh pagination
+    createPagination(listBlogDB.length);
+}
+
+function createPagination(totalPosts) {
+    var totalPages = Math.ceil(totalPosts / postsPerPage);
+    var pagination = document.querySelector(".pagination");
+    pagination.innerHTML = ''; // Xóa toàn bộ nội dung của thanh pagination
+
+
+    // Tạo các liên kết trang
+    for (var i = 1; i <= totalPages; i++) {
+        var pageItem = document.createElement("li");
+        pageItem.classList.add("page-item");
+
+        var pageLink = document.createElement("a");
+        pageLink.classList.add("page-link");
+        pageLink.classList.add("h5");
+
+        pageLink.href = "#";
+        pageLink.textContent = i;
+
+        // Xử lý sự kiện khi nhấp vào trang
+        pageLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            currentPage = parseInt(this.textContent); // Cập nhật trang hiện tại
+            changeBlog();
+        });
+        if (i === currentPage) {
+            pageItem.classList.add("active"); // Thêm lớp active cho liên kết trang hiện tại
+        }
+        pageItem.appendChild(pageLink);
+        pagination.appendChild(pageItem);
+    }
+
 }
 
 function changeLearing(userLearningDB) {

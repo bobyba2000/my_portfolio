@@ -2842,6 +2842,7 @@ p.form-message.error.form-message.error {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     position: relative;
+    display: flex;
     width: 25%;
     height: 100vh;
     min-height: 600px;
@@ -2850,6 +2851,8 @@ p.form-message.error.form-message.error {
     overflow-x: scroll;
     -webkit-transition: width 0.5s ease;
     transition: width 0.5s ease;
+    justify-content: center;
+    text-align: center;
 }
 
 .tl-item:before,
@@ -2876,8 +2879,8 @@ p.form-message.error.form-message.error {
     background: linear-gradient(to bottom, transparent 0%, black 75%);
     z-index: 1;
     opacity: 0;
-    -webkit-transform: translate3d(0, 0, 0) translateY(30%);
-    transform: translate3d(0, 0, 0) translateY(30%);
+    -webkit-transform: translate3d(0, 0, 0) translateY(50%);
+    transform: translate3d(0, 0, 0) translateY(50%);
     -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
     transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -2907,17 +2910,14 @@ p.form-message.error.form-message.error {
     -webkit-transform: translateY(0);
     transform: translateY(0);
     -webkit-transition: all 0.75s ease 0.5s;
-    top: 20%;
+    top: 45%;
     transition: all 0.75s ease 0.5s;
 }
 
 .tl-item:hover .tl-year {
-    top: 10%;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    top: 30%;
     -webkit-transition: all 0.75s ease 0.5s;
     transition: all 0.75s ease 0.5s;
-    left: 45%;
 }
 
 .tl-item:hover .tl-bg {
@@ -2946,20 +2946,21 @@ p.form-message.error.form-message.error {
 }
 
 .tl-year {
+    display: flex;
     position: absolute;
     top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
     z-index: 1;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
+    width: 70%;
+    justify-content: center;
 }
 
 .tl-year p {
     font-family: "Montserrat", sans-serif;
     font-size: 1.728rem;
     line-height: 1.75;
+    text-align: center;
 }
 
 .tl-bg {
@@ -3198,6 +3199,15 @@ body ::-moz-selection {
     .event-content {
         display: none;
     }
+    .tl-year {
+        width: 60%;
+    }
+    .tl-year p {
+        font-size: 1.1rem;
+    }
+    .tl-content h1 {
+        font-size: 1rem;
+    }
 }
 
 .slide-content-cta:hover {
@@ -3403,6 +3413,13 @@ body ::-moz-selection {
 .pagination-item:not(.active):hover {
     background-color: #fff;
     width: 35px;
+}
+
+.page-item .page-link {
+    width: 50px;
+    color: #fff;
+    background: rgb(0, 0, 0);
+    text-align: center;
 }
 
 @-webkit-keyframes slideLeft {
