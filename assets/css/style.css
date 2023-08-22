@@ -2915,7 +2915,7 @@ p.form-message.error.form-message.error {
 }
 
 .tl-item:hover .tl-year {
-    top: 30%;
+    top: 25%;
     -webkit-transition: all 0.75s ease 0.5s;
     transition: all 0.75s ease 0.5s;
 }
