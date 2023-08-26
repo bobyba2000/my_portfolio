@@ -707,8 +707,10 @@ function sendEmail() {
         SecureToken: "50293a03-5e29-4b1a-9a8a-0ad63ccf7be1",
         To: "hoangtridung.htd@gmail.com",
         From: "htdung.3.1.1998@gmail.com",
-        Subject: "Question from " + document.getElementById("send-name").value + ", Email: " + document.getElementById("send-email").value,
-        Body: document.getElementById("send-message").value,
+        Subject: "Booking from hoangtridung.com.vn",
+        Body: "Name: " + document.getElementById("send-name").value + "\n" +
+            "Mail: " + document.getElementById("send-email").value + "\n" +
+            "message: " + document.getElementById("send-message").value,
     }).then(
         message => alert(message)
     );
