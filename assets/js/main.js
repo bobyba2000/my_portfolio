@@ -539,6 +539,7 @@ function generateTimelineItem(title, year, image, content) {
     <div class="tl-content">
         <h1 style="font-weight: bold">${title}</h1>
         <p>${content}</p>
+        <a class="mt-3 main-btn" href="https://vcogroup.vn/en" target="_blank">Tìm hiểu thêm</a>
     </div>`
     div.innerHTML = timelineHtml.trim();
     return div;
