@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    <script type="text/javascript" src="assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/c28fcff1be.js" crossorigin="anonymous"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MN58XGR7E"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MN58XGR7E"></script> -->
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    <script>
+    <!-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -17,7 +18,7 @@
         gtag('js', new Date());
 
         gtag('config', 'G-6MN58XGR7E');
-    </script>
+    </script> -->
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -38,10 +39,10 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="./assets/css/style.css">
 
-
     <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+    <!-- <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
-    <script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script>
+    <script src="https://unpkg.com/v-tag-input@0.0.3/dist/v-tag-input.js"></script> -->
 
 </head>
 
@@ -354,6 +355,17 @@
     </section> -->
     <!--====== BLOG PART ENDS ======-->
     <!--====== CONTACT PART START ======-->
+    <script>
+        $(function() {
+            $('#send-date').datepick({
+                multiSelect: 999,
+                monthsToShow: 1,
+
+            });
+
+        });
+    </script>
+
     <section id="contact" class="contact-area pt-50 pb-100 gray-bg" style="background-color: black;">
         <div class="container">
             <div class="row justify-content-center">
@@ -415,11 +427,17 @@
                                 <input type="email" name="email" id="send-email" placeholder="Email">
                             </div>
                             <div class="single-form">
-                                <textarea name="message" id="send-message" placeholder="Tin nhắn"></textarea>
+                                <input type="text" name="phone" id="send-phone" placeholder="Số điện thoại">
+                            </div>
+                            <div class="single-form">
+                                <input type="text" name="date" id="send-date" placeholder="Chọn ngày hẹn">
+                            </div>
+                            <div class="single-form">
+                                <textarea name="message" id="send-message" placeholder="Đặt câu hỏi hoặc thủ thỉ cùng Dũng"></textarea>
                             </div>
                             <p class="form-message"></p>
                             <div class="single-form">
-                                <button class="main-btn" type="submit" onclick="sendEmail()">Thủ thỉ cùng Dũng</button>
+                                <button class="main-btn" type="submit" onclick="sendEmail()">Đặt lịch</button>
                             </div>
                         </form>
                     </div>
@@ -436,6 +454,7 @@
         </div>
         <!-- container -->
     </section>
+
     <!--====== CONTACT PART ENDS ======-->
     <!--====== FOOTER PART START ======-->
     <footer id="footer" class="footer-area">
@@ -463,8 +482,9 @@
     <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
     <!--====== BACK TOP TOP PART ENDS ======-->
     <!--====== jquery js ======-->
-    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script> -->
+
+
     <!--====== Bootstrap js ======-->
     <!-- <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/popper.min.js"></script> -->
@@ -473,16 +493,21 @@
     <!--====== Parallax js ======-->
     <script src="assets/js/parallax.min.js"></script>
     <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
+    <!-- <script src="assets/js/waypoints.min.js"></script> -->
     <script src="assets/js/jquery.counterup.min.js"></script>
     <!--====== Appear js ======-->
-    <script src="assets/js/jquery.appear.min.js"></script>
+    <!-- <script src="assets/js/jquery.appear.min.js"></script> -->
     <!--====== Scrolling js ======-->
     <script src="assets/js/scrolling-nav.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
-    <script>
+
+
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.datepick.css">
+    <script type="text/javascript" src="assets/js/jquery.plugin.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.datepick.js"></script>
+    <!-- <script>
         var a = 0;
 
         function addCommas(nStr) {
@@ -527,7 +552,7 @@
             }
 
         });*/
-    </script>
+    </script> -->
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
 

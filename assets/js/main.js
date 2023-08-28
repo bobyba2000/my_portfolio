@@ -1,130 +1,131 @@
+// (function($) {
+
+//     "use strict";
+
+//     //===== Prealoder
+
+//     $(window).on('load', function(event) {
+//         $('.preloader').fadeOut(400);
+//     });
+
+//     //===== Mobile Menu 
+
+//     $(".navbar-toggler").on('click', function() {
+//         $(this).toggleClass('active');
+//     });
+
+//     $(".navbar-nav a").on('click', function() {
+//         $(".navbar-toggler").removeClass('active');
+//     });
+
+
+//     //===== close navbar-collapse when a  clicked
+
+//     $(".navbar-nav a").on('click', function() {
+//         $(".navbar-collapse").removeClass("show");
+//     });
+
+
+//     //===== Sticky
+
+//     $(window).on('scroll', function(event) {
+//         var scroll = $(window).scrollTop();
+//         if (scroll < 10) {
+//             $(".navigation").removeClass("sticky");
+//         } else {
+//             $(".navigation").addClass("sticky");
+//         }
+//     });
+
+
+//     //===== Section Menu Active
+
+//     var scrollLink = $('.page-scroll');
+//     // Active link switching
+//     $(window).scroll(function() {
+//         var scrollbarLocation = $(this).scrollTop();
+
+//         scrollLink.each(function() {
+
+//             var sectionOffset = $(this.hash).offset().top - 73;
+
+//             if (sectionOffset <= scrollbarLocation) {
+//                 $(this).parent().addClass('active');
+//                 $(this).parent().siblings().removeClass('active');
+//             }
+//         });
+//     });
+
+
+
+//     // Parallaxmouse js
+
+//     function parallaxMouse() {
+//         if ($('#parallax').length) {
+//             var scene = document.getElementById('parallax');
+//             var parallax = new Parallax(scene);
+//         };
+//     };
+//     parallaxMouse();
+
+
+//     //===== Progress Bar
+
+//     if ($('.progress-line').length) {
+//         $('.progress-line').appear(function() {
+//             var el = $(this);
+//             var percent = el.data('width');
+//             $(el).css('width', percent + '%');
+//         }, { accY: 0 });
+//     }
+
+
+//     //===== Counter Up
+
+//     $('.counter').counterUp({
+//         delay: 10,
+//         time: 1600,
+//     });
+
+
+//     //===== Magnific Popup
+
+//     $('.image-popup').magnificPopup({
+//         type: 'image',
+//         gallery: {
+//             enabled: true
+//         }
+//     });
+
+
+//     //===== Back to top
+
+//     // Show or hide the sticky footer button
+//     $(window).on('scroll', function(event) {
+//         if ($(this).scrollTop() > 600) {
+//             $('.back-to-top').fadeIn(200)
+//         } else {
+//             $('.back-to-top').fadeOut(200)
+//         }
+//     });
+
+
+//     //Animate the scroll to yop
+//     $('.back-to-top').on('click', function(event) {
+//         event.preventDefault();
+
+//         $('html, body').animate({
+//             scrollTop: 0,
+//         }, 1500);
+//     });
+//     //===== 
+
+// }(jQuery));
+
 (function($) {
-
     "use strict";
-
-    //===== Prealoder
-
-    $(window).on('load', function(event) {
-        $('.preloader').delay(400).fadeOut(400);
-    });
-
-    //===== Mobile Menu 
-
-    $(".navbar-toggler").on('click', function() {
-        $(this).toggleClass('active');
-    });
-
-    $(".navbar-nav a").on('click', function() {
-        $(".navbar-toggler").removeClass('active');
-    });
-
-
-    //===== close navbar-collapse when a  clicked
-
-    $(".navbar-nav a").on('click', function() {
-        $(".navbar-collapse").removeClass("show");
-    });
-
-
-    //===== Sticky
-
-    $(window).on('scroll', function(event) {
-        var scroll = $(window).scrollTop();
-        if (scroll < 10) {
-            $(".navigation").removeClass("sticky");
-        } else {
-            $(".navigation").addClass("sticky");
-        }
-    });
-
-
-    //===== Section Menu Active
-
-    var scrollLink = $('.page-scroll');
-    // Active link switching
-    $(window).scroll(function() {
-        var scrollbarLocation = $(this).scrollTop();
-
-        scrollLink.each(function() {
-
-            var sectionOffset = $(this.hash).offset().top - 73;
-
-            if (sectionOffset <= scrollbarLocation) {
-                $(this).parent().addClass('active');
-                $(this).parent().siblings().removeClass('active');
-            }
-        });
-    });
-
-
-
-    // Parallaxmouse js
-
-    function parallaxMouse() {
-        if ($('#parallax').length) {
-            var scene = document.getElementById('parallax');
-            var parallax = new Parallax(scene);
-        };
-    };
-    parallaxMouse();
-
-
-    //===== Progress Bar
-
-    if ($('.progress-line').length) {
-        $('.progress-line').appear(function() {
-            var el = $(this);
-            var percent = el.data('width');
-            $(el).css('width', percent + '%');
-        }, { accY: 0 });
-    }
-
-
-    //===== Counter Up
-
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1600,
-    });
-
-
-    //===== Magnific Popup
-
-    $('.image-popup').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-
-
-    //===== Back to top
-
-    // Show or hide the sticky footer button
-    $(window).on('scroll', function(event) {
-        if ($(this).scrollTop() > 600) {
-            $('.back-to-top').fadeIn(200)
-        } else {
-            $('.back-to-top').fadeOut(200)
-        }
-    });
-
-
-    //Animate the scroll to yop
-    $('.back-to-top').on('click', function(event) {
-        event.preventDefault();
-
-        $('html, body').animate({
-            scrollTop: 0,
-        }, 1500);
-    });
-    //===== 
-
-}(jQuery));
-
-(function($) {
-    "use strict";
-    $(window).on('load', function(event) { $('.preloader').delay(500).fadeOut(500); });
+    // $(window).on('load', function(event) { $('.preloader').fadeOut(500); });
+    $('.preloader').delay(2000).fadeOut(500);
     $(".navbar-toggler").on('click', function() { $(this).toggleClass('active'); });
     $(".navbar-nav a").on('click', function() { $(".navbar-toggler").removeClass('active'); });
     $(".navbar-nav a").on('click', function() { $(".navbar-collapse").removeClass("show"); });
@@ -708,10 +709,12 @@ function sendEmail() {
         To: "hoangtridung.htd@gmail.com",
         From: "htdung.3.1.1998@gmail.com",
         Subject: "Booking from hoangtridung.com.vn",
-        Body: "Name: " + document.getElementById("send-name").value + "\n" +
-            "Mail: " + document.getElementById("send-email").value + "\n" +
+        Body: "Name: " + document.getElementById("send-name").value + "<br>" +
+            "Mail: " + document.getElementById("send-email").value + "<br>" +
+            "Phone: " + document.getElementById("send-phone").value + "<br>" +
+            "Booking dates: " + document.getElementById("send-date").value + "<br>" +
             "message: " + document.getElementById("send-message").value,
     }).then(
-        message => alert(message)
+        message => alert("Tôi sẽ liên hệ bạn sớm nhất có thể. Cảm ơn bạn!")
     );
 }
