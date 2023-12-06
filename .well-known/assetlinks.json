@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.wilmar.apps.eos.customerapp.nzl.dev",
+    "sha256_cert_fingerprints": [ "A9:36:21:BD:33:17:DB:0F:C6:26:FF:4D:FC:97:F3:BC:45:87:3C:D6:9C:BC:6B:01:C5:D6:14:6C:84:E7:7B:B2" ]
+  }
+}]
